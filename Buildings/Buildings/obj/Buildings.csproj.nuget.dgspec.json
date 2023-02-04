@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ivan\\Desktop\\1,2,3,4 sem\\GITLAB\\projekt\\buildings-communication\\Buildings\\Buildings\\Buildings.csproj": {}
+    "C:\\Users\\Ivan\\Desktop\\coding\\MyProject\\buildings-communication\\Buildings\\Buildings\\Buildings.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ivan\\Desktop\\1,2,3,4 sem\\GITLAB\\projekt\\buildings-communication\\Buildings\\Buildings\\Buildings.csproj": {
+    "C:\\Users\\Ivan\\Desktop\\coding\\MyProject\\buildings-communication\\Buildings\\Buildings\\Buildings.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ivan\\Desktop\\1,2,3,4 sem\\GITLAB\\projekt\\buildings-communication\\Buildings\\Buildings\\Buildings.csproj",
+        "projectUniqueName": "C:\\Users\\Ivan\\Desktop\\coding\\MyProject\\buildings-communication\\Buildings\\Buildings\\Buildings.csproj",
         "projectName": "Buildings",
-        "projectPath": "C:\\Users\\Ivan\\Desktop\\1,2,3,4 sem\\GITLAB\\projekt\\buildings-communication\\Buildings\\Buildings\\Buildings.csproj",
+        "projectPath": "C:\\Users\\Ivan\\Desktop\\coding\\MyProject\\buildings-communication\\Buildings\\Buildings\\Buildings.csproj",
         "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ivan\\Desktop\\1,2,3,4 sem\\GITLAB\\projekt\\buildings-communication\\Buildings\\Buildings\\obj\\",
+        "outputPath": "C:\\Users\\Ivan\\Desktop\\coding\\MyProject\\buildings-communication\\Buildings\\Buildings\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config",
