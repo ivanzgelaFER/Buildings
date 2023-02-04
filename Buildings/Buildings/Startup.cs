@@ -6,7 +6,8 @@ namespace Buildings
     {
         public void Configure(IApplicationBuilder app)
         {
-            //Console.WriteLine("evo me u startup-u krecemo polako");
+
+
 
         }
     }
