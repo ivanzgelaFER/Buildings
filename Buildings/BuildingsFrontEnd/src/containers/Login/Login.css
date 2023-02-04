@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     height: 100vh;
-    background: no-repeat url('../../../public/space.png');
  }
 
  .login::backdrop {

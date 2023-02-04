@@ -1,7 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { useSelector } from "react-redux";
-import { UserData } from "../models/userData";
-import { AppState } from "../store/configureStore";
 
 export const login = async (username: string, password: string) => {
     const res = await axios.post("/auth/login", { username, password });

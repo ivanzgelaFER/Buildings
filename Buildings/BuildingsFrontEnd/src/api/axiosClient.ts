@@ -1,4 +1,4 @@
-import axios, { AxiosStatic } from "axios";
+import { AxiosStatic } from "axios";
 import { UserData } from "../models/userData";
 /*
 if (window.location.hostname === "localhost") {
@@ -7,6 +7,8 @@ if (window.location.hostname === "localhost") {
 } else {
     //axios.defaults.baseURL = "http://51.103.117.168:8080/api";
 }*/
+
+const DEFAULT_API_VERSION = 3;
 
 export const configureAxiosClient = (axios: AxiosStatic) => {
     axios.interceptors.request.use(config => {
@@ -18,7 +20,8 @@ export const configureAxiosClient = (axios: AxiosStatic) => {
         return config;
     }); 
     axios.interceptors.request.use(config => {
-        config.baseURL = config.baseURL ?? `/api/`;
+        const apiVersion = config.apiVersion ?? DEFAULT_API_VERSION;
+        config.baseURL = config.baseURL ?? `/api/v${apiVersion}/`;
         return config;
     });
     axios.interceptors.request.use(config => {

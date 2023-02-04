@@ -1,4 +1,4 @@
-import { take, call, put, race, delay, select } from "redux-saga/effects";
+import { take, call, put, race } from "redux-saga/effects";
 import { login, logout } from "../api/users";
 import axios from "axios";
 import {

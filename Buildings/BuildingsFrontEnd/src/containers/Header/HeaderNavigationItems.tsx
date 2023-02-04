@@ -6,7 +6,7 @@ export interface ISimpleHeaderItems {
 }
 
 export const getHeaderItems = (userRole: string): ISimpleHeaderItems[] => {
-    if (userRole == UserRole.SatelliteAdmin) {
+    if (userRole === UserRole.SatelliteAdmin) {
         return [
             {
                 label: "SEND MESSAGE",
@@ -25,7 +25,7 @@ export const getHeaderItems = (userRole: string): ISimpleHeaderItems[] => {
                 link: "/transmitters",
             },
         ];
-    } else if (userRole == UserRole.SuperAdmin) {
+    } else if (userRole === UserRole.SuperAdmin) {
         return [
             {
                 label: "SEND MESSAGE",

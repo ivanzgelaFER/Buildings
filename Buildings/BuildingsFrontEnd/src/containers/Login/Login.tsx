@@ -1,5 +1,5 @@
 import "./Login.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../store/configureStore";
 import { loginRequest } from "../../actions/authentificationActions";
@@ -14,28 +14,12 @@ export const Login = () => {
     const disabled = loginState.currentlySending;
     const dispatch = useDispatch();
     const [username, setUserName] = useState("");
-    const [password, setPassword] = useState("");    
-
-    const loginWithEnter = (event: any) => {
-        if(event.key == 'Enter') {
-            event.preventDefault();
-            dispatch(loginRequest({ username, password }));             
-        }
-    };
-
-    useEffect(() => {
-        document.addEventListener("keydown", loginWithEnter);
-
-        return () => document.removeEventListener("keydown", loginWithEnter);
-    }, [loginWithEnter]);
+    const [password, setPassword] = useState("");
 
     return (
         <div className="login">
             <RedirectIfLoggedIn />
             <div className="login-container">
-                <div className="logo-container">
-                    <img src="./logo.png" alt="logo"></img>
-                </div>
                 <div>
                     <span className="p-float-label">
                         <InputText

@@ -1,14 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { getHeaderItems, ISimpleHeaderItems } from "./HeaderNavigationItems";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/authentificationActions";
 import { AppState } from "../../store/configureStore";
-import { userHasRole, UserRole } from "../../models/userData";
 import "primeicons/primeicons.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Header = () => {
     const dispatch = useDispatch();
@@ -16,11 +13,10 @@ export const Header = () => {
     const user = useSelector((state: AppState) => state.user) as any;
     const headerItems: ISimpleHeaderItems[] = getHeaderItems(user.role) ?? [];
     const [isUserMenuShown, setIsUserMenuShown] = useState(false);
-    const ref = useRef(null);
 
     useEffect(() => {
         const closeUserMenu = (event: any) => {
-            if (event.path[0].tagName != "I") {
+            if (event.path[0].tagName !== "I") {
                 setIsUserMenuShown(false);
             }
         };
@@ -31,9 +27,7 @@ export const Header = () => {
 
     const start = (
         <Link to="/" aria-label="Početak headera">
-            <div>
-                <img alt="logo" src="./logo.png" height={"50px"}></img>
-            </div>
+            <div></div>
         </Link>
     );
 

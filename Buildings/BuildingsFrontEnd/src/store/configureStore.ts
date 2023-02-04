@@ -14,7 +14,6 @@ export interface AppState {
     user: UserData;
     loginRedirectPath: string | null;
     toastMessage: ToastMessageState;
-
 }
 
 const configureStore = (initialState?: AppState) => {
