@@ -19,3 +19,28 @@ C:\Users\Ivan\Desktop\1,2,3,4 sem\GITLAB\projekt\buildings-communication\Buildin
 C:\Users\Ivan\Desktop\1,2,3,4 sem\GITLAB\projekt\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.pdb
 C:\Users\Ivan\Desktop\1,2,3,4 sem\GITLAB\projekt\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.genruntimeconfig.cache
 C:\Users\Ivan\Desktop\1,2,3,4 sem\GITLAB\projekt\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\ref\Buildings.dll
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\appsettings.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\ClientApp\package-lock.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\ClientApp\package.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\ClientApp\public\manifest.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\ClientApp\tsconfig.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\Buildings.exe
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\Buildings.deps.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\Buildings.runtimeconfig.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\Buildings.dll
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\bin\Debug\net6.0\Buildings.pdb
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.csproj.AssemblyReference.cache
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.AssemblyInfoInputs.cache
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.AssemblyInfo.cs
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.csproj.CoreCompileInputs.cache
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\scopedcss\bundle\Buildings.styles.css
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.dll
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\refint\Buildings.dll
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.pdb
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\Buildings.genruntimeconfig.cache
+C:\Users\Ivan\Desktop\coding\MyProject\buildings-communication\Buildings\Buildings\obj\Debug\net6.0\ref\Buildings.dll

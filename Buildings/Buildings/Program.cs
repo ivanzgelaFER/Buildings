@@ -1,6 +1,14 @@
+
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
+try
+{
+   //var app = builder.ConfigureServices().ConfigurePipeline();
+   //app.Run();
 
-app.Run();
+} catch (Exception ex)
+{
+    Console.WriteLine(ex.ToString());
+}
+
+
