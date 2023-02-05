@@ -1,6 +1,7 @@
 ﻿using Buildings.Data.Helpers;
 using Buildings.Domain.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,18 @@ namespace Buildings.Data
 {
     public static class SeedData
     {
-        public static async Task InitializeAsync(BuildingsContext ctx, AppUserManager userManager, RoleManager<AppRole> roleManager)
+        public static async Task InitializeAsync(BuildingsContext ctx, AppUserManager userManager, RoleManager<AppRole> roleManager, IConfiguration config)
         {
-            /*
+            
             try
             {
                 await ctx.Database.MigrateAsync();
             }
             catch (Exception ex)
             {
-                Log.Error(ex.Message);
+               // Log.Error(ex.Message);
             }
+            /*
             string adminPassword = config.GetSection("SeedPasswordAdmin").Value;
             string userPassword = config.GetSection("SeedPasswordUser").Value;
             string studentPassword = config.GetSection("SeedPasswordStudent").Value;
@@ -35,7 +37,7 @@ namespace Buildings.Data
 
             if (!await dbContext.Projects.AnyAsync()) await SeedProjects(dbContext);
             if (!await dbContext.Partners.AnyAsync()) await SeedPartners(dbContext);
-        */
+            */
         }
     }
 }

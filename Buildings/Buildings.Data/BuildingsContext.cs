@@ -11,6 +11,14 @@ namespace Buildings.Data
 {
     public class BuildingsContext : IdentityDbContext<AppUser, AppRole, long>
     {
+        public BuildingsContext(DbContextOptions<BuildingsContext> options) : base(options) { }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+
+        }
     }
 }
