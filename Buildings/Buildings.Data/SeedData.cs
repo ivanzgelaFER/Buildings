@@ -12,7 +12,7 @@ namespace Buildings.Data
 {
     public static class SeedData
     {
-        public static async Task InitializeAsync(BuildingsContext ctx, AppUserManager userManager, RoleManager<AppRole> roleManager, IConfiguration config)
+        public static async Task InitializeAsync(BuildingsContext ctx, AppUserManager userManager, RoleManager<AppRole> roleManager)
         {
             /*
             try

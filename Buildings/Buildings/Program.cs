@@ -21,7 +21,7 @@ namespace Aconto
             //RoleManager<AppRole> roleManager = scope.ServiceProvider.GetService<RoleManager<AppRole>>();
             BuildingsContext context = scope.ServiceProvider.GetService<BuildingsContext>();
             IConfiguration config = scope.ServiceProvider.GetService<IConfiguration>();
-            await SeedData.InitializeAsync(context, userManager, roleManager, config);
+            //await SeedData.InitializeAsync(context, userManager, roleManager, config);
             await host.RunAsync();
         }
 
