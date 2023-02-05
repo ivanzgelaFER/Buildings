@@ -14,6 +14,7 @@ namespace Buildings.Data
     {
         public static async Task InitializeAsync(BuildingsContext ctx, AppUserManager userManager, RoleManager<AppRole> roleManager, IConfiguration config)
         {
+            /*
             try
             {
                 await ctx.Database.MigrateAsync();
@@ -34,6 +35,7 @@ namespace Buildings.Data
 
             if (!await dbContext.Projects.AnyAsync()) await SeedProjects(dbContext);
             if (!await dbContext.Partners.AnyAsync()) await SeedPartners(dbContext);
+        */
         }
     }
 }
