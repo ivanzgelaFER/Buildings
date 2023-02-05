@@ -15,9 +15,13 @@ namespace Aconto
         {
             IHost host = CreateHostBuilder(args).Build();
             using IServiceScope scope = host.Services.CreateScope();
-
-
-
+            /*
+            AppUserManager userManager = scope.ServiceProvider.GetService<AppUserManager>();
+            RoleManager<AppRole> roleManager = scope.ServiceProvider.GetService<RoleManager<AppRole>>();
+            AppDbContext context = scope.ServiceProvider.GetService<AppDbContext>();
+            IConfiguration config = scope.ServiceProvider.GetService<IConfiguration>();
+            await SeedData.InitializeAsync(context, userManager, roleManager, config);
+            */
             await host.RunAsync();
         }
 
