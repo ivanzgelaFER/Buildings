@@ -1,4 +1,6 @@
-using Buildings;
+using Buildings.Data;
+using Buildings.Data.Helpers;
+using Buildings.Domain.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -7,21 +9,19 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading.Tasks;
 
-namespace Aconto
+namespace Buildings
 {
     public class Program
     {
         public async static Task Main(string[] args)
         {
             IHost host = CreateHostBuilder(args).Build();
-            using IServiceScope scope = host.Services.CreateScope();
-            /*
+            using IServiceScope scope = host.Services.CreateScope();  //using because IServiceScope implements interface IDisposable
             AppUserManager userManager = scope.ServiceProvider.GetService<AppUserManager>();
             RoleManager<AppRole> roleManager = scope.ServiceProvider.GetService<RoleManager<AppRole>>();
-            AppDbContext context = scope.ServiceProvider.GetService<AppDbContext>();
+            BuildingsContext context = scope.ServiceProvider.GetService<BuildingsContext>();
             IConfiguration config = scope.ServiceProvider.GetService<IConfiguration>();
             await SeedData.InitializeAsync(context, userManager, roleManager, config);
-            */
             await host.RunAsync();
         }
 
