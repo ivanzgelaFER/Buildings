@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Primitives;
 using Microsoft.Extensions.DependencyInjection;
 using Aconto.Domain.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
 
 namespace Buildings
 {
@@ -27,6 +30,8 @@ namespace Buildings
         /* Transient-This lifestyle services are created each time they are requested (database access, file access, when you need a fresh instance of an object every single time)
            Scoped-Scoped lifestyle services are created once per request
            Singleton-A singleton service is created once at first time it is requested and this instance of service is used by every sub-requests(useful for global configuration, business rules, persisting state)*/
+
+        // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureDatabase(services);
@@ -49,9 +54,9 @@ namespace Buildings
                 options.Lockout.MaxFailedAccessAttempts = lockoutSettings.Attempts;
                 options.Lockout.DefaultLockoutTimeSpan = lockoutSettings.LockoutTimespan;
             })
-                .AddUserManager<AppUserManager>();
-                //,AddEntityFrameworkStores<AppDbContext>()
-                //.AddDefaultTokenProviders();
+                .AddUserManager<AppUserManager>()
+                .AddEntityFrameworkStores<BuildingsContext>()
+                .AddDefaultTokenProviders();
 
             byte[] key = Encoding.ASCII.GetBytes(Configuration["Secret"]);
             services.AddAuthentication(x =>
@@ -85,7 +90,6 @@ namespace Buildings
                 };
                 x.RequireHttpsMetadata = false;
                 x.SaveToken = true;
-                /*
                 x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
@@ -93,7 +97,6 @@ namespace Buildings
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
-                */
             });
             /*
             ISignalRServerBuilder signalRBuilder = services.AddSignalR(options =>
@@ -108,18 +111,26 @@ namespace Buildings
 
             services.AddScoped<IMailService, MailService>();
             */
-            //services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddControllersWithViews().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSpaStaticFiles(configuration => configuration.RootPath = "ClientApp/build");
 
-            /*
             services.AddApiVersioning(options =>
             {
                 options.Conventions.Add(new VersionByNamespaceConvention());
             });
-            */
 
             services.AddCustomSwagger();
 
+            //services.AddScoped<IProjectsService, ProjectsService>();   here is scope for services
+
+            /*
+            services = Configuration["Store"] switch
+            {
+                "DO" => services.AddScoped<ICloudService, DigitalOceanService>(),
+                "Azure" => services.AddScoped<ICloudService, AzureService>(),
+                _ => services.AddScoped<ICloudService, LocalService>()
+            };
+            */
             Environment.SetEnvironmentVariable("AWS_ACCESS_KEY_ID", Configuration["AWS:AccessKey"]);
             Environment.SetEnvironmentVariable("AWS_SECRET_ACCESS_KEY", Configuration["AWS:SecretKey"]);
         }
