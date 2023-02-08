@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Navigate, RouteProps, useLocation } from "react-router-dom";
 import { SetLoginRedirectPath } from "../../actions/loginRedirectPathActions";
 import { AppState } from "../../store/configureStore";
@@ -8,11 +8,12 @@ type PrivateRouteProps = RouteProps & {
 };
 
 export const PrivateRoute = ({ component: Component, ...rest }: PrivateRouteProps) => {
-    const loginState = useSelector((state: AppState) => state.login);
     const token = useSelector((state: AppState) => state.user.token);
+    const loginState = useSelector((state: AppState) => state.login);
     const location = useLocation();
     const dispatch = useDispatch();
-    if (loginState.loggedIn && token) return <Component />;
+
+    if (token && loginState.loggedIn) return <Component />;
     else {
         const loginRedirectPath = loginState.loggingOut
             ? null

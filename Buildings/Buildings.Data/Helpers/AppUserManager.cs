@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Buildings.Domain.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -20,6 +16,10 @@ namespace Buildings.Data.Helpers
         {
             ctx = services.GetService<BuildingsContext>();
             this.mapper = mapper;
+        }
+        public async Task<AppUser> GetUserByGuidAsync(Guid guid)
+        {
+            return await Users.SingleOrDefaultAsync(u => u.Guid == guid);
         }
     }
 }

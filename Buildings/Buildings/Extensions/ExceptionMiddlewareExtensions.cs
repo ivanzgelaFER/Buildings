@@ -1,14 +1,9 @@
-﻿using Aconto.Domain;
-using Aconto.Domain.Exceptions;
+﻿using Aconto.Domain.Exceptions;
 using Aconto.Domain.Models;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Serilog;
-using System;
 using System.Net;
-using System.Threading.Tasks;
 
-namespace Aconto.Extensions
+namespace Buildings.Extensions
 {
     public static class ExceptionMiddlewareExtensions
     {
