@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using Aconto.Domain.Enums;
 
 namespace Buildings.Domain.Models
 {

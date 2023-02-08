@@ -11,7 +11,6 @@ namespace Buildings.Data
     {
         public static async Task InitializeAsync(BuildingsContext ctx, AppUserManager userManager, RoleManager<AppRole> roleManager, IConfiguration config)
         {
-
             try
             {
                 await ctx.Database.MigrateAsync();
@@ -23,8 +22,10 @@ namespace Buildings.Data
 
             string adminPassword = config.GetSection("SeedPasswordAdmin").Value;
             string superAdminPassword = config.GetSection("SeedPasswordSuperAdmin").Value;
+            string tenantPassword = config.GetSection("SeedPasswordTenant").Value;
+
             if (!await ctx.Roles.AnyAsync()) await SeedRolesAsync(roleManager);
-            if (!await ctx.Users.AnyAsync()) await SeedUsersAsync(userManager, adminPassword, superAdminPassword, ctx);
+            if (!await ctx.Users.AnyAsync()) await SeedUsersAsync(userManager, adminPassword, superAdminPassword, tenantPassword, ctx);
         }
 
         private static async Task SeedRolesAsync(RoleManager<AppRole> roleManager)
@@ -34,20 +35,47 @@ namespace Buildings.Data
             await roleManager.CreateAsync(new AppRole("Tenant"));
         }
 
-        private static async Task SeedUsersAsync(UserManager<AppUser> userManager, string adminPassword, string superAdminPassword, BuildingsContext context)
+        private static async Task SeedUsersAsync(UserManager<AppUser> userManager, string adminPassword, string superAdminPassword, string tenantPassword, BuildingsContext context)
         {
+            //SUPERADMIN
             AppUser superAdmin = new()
             {
-                UserName = "super_admin@aconto.app",
-                Email = "super_admin@aconto.app",
-                FirstName = "AcontoSuper",
-                LastName = "AdminSuper",
+                UserName = "superAdmin@buildings.app",
+                Email = "superAdmin@buildings.app",
+                FirstName = "Super",
+                LastName = "Admin",
             };
             await userManager.CreateAsync(superAdmin, superAdminPassword);
             await userManager.AddToRoleAsync(superAdmin, "SuperAdmin");
 
             superAdmin.PasswordRecoveryToken = await userManager.GeneratePasswordResetTokenAsync(superAdmin);
             await userManager.UpdateAsync(superAdmin);
+            //ADMIN
+            AppUser admin = new()
+            {
+                UserName = "admin@buildings.app",
+                Email = "admin@buildings.app",
+                FirstName = "Admin",
+                LastName = "Person",
+            };
+            await userManager.CreateAsync(admin, adminPassword);
+            await userManager.AddToRoleAsync(admin, "Admin");
+
+            admin.PasswordRecoveryToken = await userManager.GeneratePasswordResetTokenAsync(admin);
+            await userManager.UpdateAsync(admin);
+            //TENANT
+            AppUser tenant = new()
+            {
+                UserName = "tenant@buildings.app",
+                Email = "tenant@buildings.app",
+                FirstName = "Tenant",
+                LastName = "Person",
+            };
+            await userManager.CreateAsync(tenant, tenantPassword);
+            await userManager.AddToRoleAsync(tenant, "Tenant");
+
+            tenant.PasswordRecoveryToken = await userManager.GeneratePasswordResetTokenAsync(tenant);
+            await userManager.UpdateAsync(tenant);
         }
     }
 }

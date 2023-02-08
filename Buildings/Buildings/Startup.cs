@@ -122,7 +122,7 @@ namespace Buildings
 
             services.AddCustomSwagger();
 
-            //services.AddScoped<IProjectsService, ProjectsService>();   here is scope for services
+            //services.AddScoped<IProjectsService, ProjectsService>();
 
             /*
             services = Configuration["Store"] switch
