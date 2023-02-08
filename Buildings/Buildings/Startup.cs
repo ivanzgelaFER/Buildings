@@ -16,16 +16,17 @@ using Aconto.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
+using Aconto.Domain.Enums;
 
 namespace Buildings
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-        public IConfiguration Configuration { get; }
 
         /* Transient-This lifestyle services are created each time they are requested (database access, file access, when you need a fresh instance of an object every single time)
            Scoped-Scoped lifestyle services are created once per request
@@ -83,8 +84,8 @@ namespace Buildings
                     {
                         AppUserManager userManager = context.HttpContext.RequestServices.GetRequiredService<AppUserManager>();
                         Guid userGuid = Guid.Parse(context.Principal.FindFirst("guid").Value);
-                        //AppUser user = userManager.GetUserByGuidAsync(userGuid).Result;
-                        //if (user == null || user.IsEnabled != UserEnabled.IsEnabled) context.Fail("Unauthorized");
+                        AppUser user = userManager.GetUserByGuidAsync(userGuid).Result;
+                        if (user == null || user.IsEnabled != UserEnabled.IsEnabled) context.Fail("Unauthorized");
                         return Task.CompletedTask;
                     }
                 };
