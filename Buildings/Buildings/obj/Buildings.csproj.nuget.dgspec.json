@@ -178,6 +178,9 @@
             "projectReferences": {
               "C:\\Users\\Ivan\\Desktop\\coding\\MyProject\\buildings-communication\\Buildings\\Buildings.Data\\Buildings.Data.csproj": {
                 "projectPath": "C:\\Users\\Ivan\\Desktop\\coding\\MyProject\\buildings-communication\\Buildings\\Buildings.Data\\Buildings.Data.csproj"
+              },
+              "C:\\Users\\Ivan\\Desktop\\coding\\MyProject\\buildings-communication\\Buildings\\Buildings.Domain\\Buildings.Domain.csproj": {
+                "projectPath": "C:\\Users\\Ivan\\Desktop\\coding\\MyProject\\buildings-communication\\Buildings\\Buildings.Domain\\Buildings.Domain.csproj"
               }
             }
           }

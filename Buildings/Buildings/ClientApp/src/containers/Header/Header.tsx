@@ -52,7 +52,8 @@ export const Header = () => {
     return (
         <header>
             <div className="menubar">
-                {start}
+                {/*start*/}
+                {/*
                 <nav className="header-content">
                     {headerItems.map(item => {
                         return (
@@ -63,7 +64,7 @@ export const Header = () => {
                             </div>
                         );
                     })}
-                </nav>
+                </nav>*/}
                 {end}
             </div>
         </header>

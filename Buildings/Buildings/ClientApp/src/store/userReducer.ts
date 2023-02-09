@@ -4,10 +4,9 @@ import {
     SET_USER,
     AuthentificationActionType,
     CLEAR_PASSWORD_RECOVERY_TOKEN,
-    SET_USER_LOCALE,
 } from "../actions/authentificationActions";
 import { isExpired } from "../helpers/JwtHelper";
-import { Locale, UserData } from "../models/userData";
+import {  UserData } from "../models/userData";
 
 const getSavedState = () => {
     const stateStr = localStorage.getItem("user");
