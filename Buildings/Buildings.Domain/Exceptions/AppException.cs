@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Aconto.Domain.Exceptions
+namespace Buildings.Domain.Exceptions
 {
     [Serializable]
     public class AppException : Exception

@@ -9,11 +9,11 @@ export interface LoginState {
     expired?: boolean;
 }
 
-const savedState = sessionStorage.getItem("user");
+const savedState = localStorage.getItem("user");
 
-export const initialState: LoginState = {
+let initialState: LoginState = {
     currentlySending: false,
-    loggedIn: savedState ? true : false,
+    loggedIn: savedState ? JSON.parse(savedState) : false,
 };
 
 export const loginReducer: Reducer<LoginState> = (

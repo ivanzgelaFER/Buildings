@@ -1,4 +1,4 @@
-namespace Aconto.Domain.Enums
+namespace Buildings.Domain.Enums
 {
     public enum UserEnabled
     {

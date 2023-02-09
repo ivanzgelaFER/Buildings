@@ -17,9 +17,20 @@ namespace Buildings.Data.Helpers
             ctx = services.GetService<BuildingsContext>();
             this.mapper = mapper;
         }
+
         public async Task<AppUser> GetUserByGuidAsync(Guid guid)
         {
             return await Users.SingleOrDefaultAsync(u => u.Guid == guid);
+        }
+
+        public async Task<AppUser> GetByPasswordRecoveryToken(string token)
+        {
+            return await Users.SingleOrDefaultAsync(u => u.PasswordRecoveryToken == AddMissingBase64Padding(token));
+        }
+
+        private static string AddMissingBase64Padding(string token)
+        {
+            return token.EndsWith("=") ? token : token.PadRight(token.Length + (4 - token.Length % 4) % 4, '=');
         }
     }
 }

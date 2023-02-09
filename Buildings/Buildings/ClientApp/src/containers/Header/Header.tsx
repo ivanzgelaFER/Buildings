@@ -33,16 +33,6 @@ export const Header = () => {
 
     const userMenu = (
         <div className="user-menu">
-            <div className="user-option" onClick={() => navigate("/user-details")}>
-                <span>
-                    <i className="pi pi-info-circle"></i>User Details
-                </span>
-            </div>
-            <div className="user-option" onClick={() => navigate("/message-history")}>
-                <span>
-                    <i className="pi pi-history"></i>Message History
-                </span>
-            </div>
             <div className="user-option" onClick={() => dispatch(logout())}>
                 <span>
                     <i className="pi pi-sign-out"></i>Log Out

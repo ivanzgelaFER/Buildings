@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Aconto.Domain.Models
+namespace Buildings.Domain.Models
 {
     public class ErrorDetails
     {

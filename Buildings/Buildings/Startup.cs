@@ -4,19 +4,15 @@ using Buildings.Data.Helpers;
 using Buildings.Domain.Models;
 using Buildings.Extensions;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
-using System;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Primitives;
-using Microsoft.Extensions.DependencyInjection;
-using Aconto.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
-using Aconto.Domain.Enums;
+using Buildings.Domain.Enums;
 
 namespace Buildings
 {

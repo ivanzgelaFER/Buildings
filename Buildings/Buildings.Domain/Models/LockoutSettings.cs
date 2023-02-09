@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Aconto.Domain.Models
+﻿namespace Buildings.Domain.Models
 {
     public class LockoutSettings
     {
