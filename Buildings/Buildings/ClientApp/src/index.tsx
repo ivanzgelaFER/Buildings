@@ -10,6 +10,9 @@ import { Login } from "./containers/Login/Login";
 import "primeicons/primeicons.css";
 import "primereact/resources/primereact.min.css";
 import { ToastMessage } from "./containers/ToastMessage/ToastMessage";
+import { Signup } from "./containers/Login/Signup";
+import { ForgotPassword } from "./containers/ForgotPassword/ForgotPassword";
+import { ResetPassword } from "./containers/ResetPassword/ResetPassword";
 
 const root = createRoot(document.getElementById("root")!);
 root.render(
@@ -17,6 +20,9 @@ root.render(
         <BrowserRouter>
             <Routes>
                 <Route path="/login" element={<Login />} />
+                <Route path="/sign-up" element={<Signup />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
                 <Route path="/*" element={<PrivateRoute path="/" component={App} />} />
             </Routes>
         </BrowserRouter>

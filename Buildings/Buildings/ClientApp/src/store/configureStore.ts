@@ -8,12 +8,15 @@ import { CLEAR_REDUX } from "../actions/authentificationActions";
 import { getClearState } from "../helpers/ReduxHelper";
 import { loginRedirectPathReducer as loginRedirectPath } from "./loginRedirectPathReducer";
 import { toastMessageReducer as toastMessage, ToastMessageState } from "./toastMessageReducer";
+import { appSizeReducer as appSize } from "./appSizeReducer";
+import { AppSize } from "../models/appSize";
 
 export interface AppState {
     login: LoginState;
     user: UserData;
     loginRedirectPath: string | null;
     toastMessage: ToastMessageState;
+    appSize: AppSize;
 }
 
 const configureStore = (initialState?: AppState) => {
@@ -22,7 +25,8 @@ const configureStore = (initialState?: AppState) => {
         login,
         user,
         loginRedirectPath,
-        toastMessage
+        toastMessage,
+        appSize
     });
     
     const rootReducer: Reducer<AppState> = (state, action) => {

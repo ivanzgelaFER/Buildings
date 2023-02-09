@@ -5,9 +5,9 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buildings", "Buildings\Buildings.csproj", "{76B91ED8-D707-412F-A1B0-24A32AA6E6FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buildings.Data", "Buildings.Data\Buildings.Data.csproj", "{ED85D535-CBEF-4836-AAB8-2C29BFE10D6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buildings.Data", "Buildings.Data\Buildings.Data.csproj", "{ED85D535-CBEF-4836-AAB8-2C29BFE10D6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Buildings.Domain", "Buildings.Domain\Buildings.Domain.csproj", "{8AD35E2A-917B-4CA6-9DEB-9268898FE9FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Buildings.Domain", "Buildings.Domain\Buildings.Domain.csproj", "{8AD35E2A-917B-4CA6-9DEB-9268898FE9FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

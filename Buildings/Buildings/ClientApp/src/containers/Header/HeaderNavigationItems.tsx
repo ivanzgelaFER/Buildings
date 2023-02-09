@@ -6,7 +6,7 @@ export interface ISimpleHeaderItems {
 }
 
 export const getHeaderItems = (userRole: string): ISimpleHeaderItems[] => {
-    if (userRole === UserRole.SatelliteAdmin) {
+    if (userRole === UserRole.SuperAdmin) {
         return [
             {
                 label: "SEND MESSAGE",
