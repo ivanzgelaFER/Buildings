@@ -12,7 +12,7 @@ export const App = () => {
     return (
         <Layout>
             <Routes location={location}>
-                <Route path="/" element={<HomePage />} />
+                <Route index path="*" element={<HomePage />} />
             </Routes>
         </Layout>
     );
