@@ -8,10 +8,11 @@ configureAxiosClient(axios);
 
 export const App = () => {
     const location = useLocation();
+
     return (
         <Layout>
             <Routes location={location}>
-                <Route path="*" element={<HomePage />} />
+                <Route index path="*" element={<HomePage />} />
             </Routes>
         </Layout>
     );

@@ -1,6 +1,12 @@
-import { take, call, put, race } from "redux-saga/effects";
+// This file contains the sagas used for async actions in our app. It's divided into
+// "effects" that the sagas call (`authorize` and `logout`) and the actual sagas themselves,
+// which listen for actions.
+
+// Sagas help us gather all our side effects (network requests in this case) in one place
+import { take, call, put, race, delay, select } from "redux-saga/effects";
 import { login, logout } from "../api/users";
 import axios from "axios";
+import { isExpired } from "../helpers/JwtHelper";
 import {
     SENDING_LOGIN_REQUEST,
     REQUEST_LOGIN_ERROR,
@@ -88,3 +94,17 @@ export function* logoutFlow() {
     }
 }
 
+/**
+ * Token expiration saga
+ * Set loggedIn false if stored token has expired and set the expired flag
+ */
+ export function* tokenExpiredFlow() {
+    while (true) {
+        yield delay(30 * 1000);
+        const token : string | undefined = yield select(state => state.user.token);
+
+        if (token && isExpired(token)) {
+            yield put({ type: SET_AUTH, newAuthState: false, loggingOut: false, expired: true });
+        }
+    }
+}

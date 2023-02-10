@@ -4,7 +4,7 @@ export const Footer = () => {
     return (
         <footer>
             <div>
-                <span>Satcom version 1.1.5</span>
+                <span>Buildings version 1.0.0</span>
             </div>
         </footer>
     );

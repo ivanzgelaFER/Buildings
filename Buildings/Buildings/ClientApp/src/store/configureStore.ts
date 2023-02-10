@@ -8,12 +8,15 @@ import { CLEAR_REDUX } from "../actions/authentificationActions";
 import { getClearState } from "../helpers/ReduxHelper";
 import { loginRedirectPathReducer as loginRedirectPath } from "./loginRedirectPathReducer";
 import { toastMessageReducer as toastMessage, ToastMessageState } from "./toastMessageReducer";
+import { appSizeReducer as appSize } from "./appSizeReducer";
+import { AppSize } from "../models/appSize";
 
 export interface AppState {
     login: LoginState;
     user: UserData;
     loginRedirectPath: string | null;
     toastMessage: ToastMessageState;
+    appSize: AppSize;
 }
 
 const configureStore = (initialState?: AppState) => {
@@ -22,7 +25,8 @@ const configureStore = (initialState?: AppState) => {
         login,
         user,
         loginRedirectPath,
-        toastMessage
+        toastMessage,
+        appSize
     });
     
     const rootReducer: Reducer<AppState> = (state, action) => {
@@ -32,13 +36,13 @@ const configureStore = (initialState?: AppState) => {
         return appReducer(state, action);
     };
 
+    const sagaMiddleware = createSagaMiddleware();
     const enhancers = [];
     const windowIfDefined = typeof window === "undefined" ? null : (window as any);
     if (windowIfDefined && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__) {
         enhancers.push(windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__());
     }
     
-    const sagaMiddleware = createSagaMiddleware();
     const result = createStore(
         rootReducer,
         initialState,
