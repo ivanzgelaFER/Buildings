@@ -36,13 +36,13 @@ const configureStore = (initialState?: AppState) => {
         return appReducer(state, action);
     };
 
+    const sagaMiddleware = createSagaMiddleware();
     const enhancers = [];
     const windowIfDefined = typeof window === "undefined" ? null : (window as any);
     if (windowIfDefined && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__) {
         enhancers.push(windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__());
     }
     
-    const sagaMiddleware = createSagaMiddleware();
     const result = createStore(
         rootReducer,
         initialState,
