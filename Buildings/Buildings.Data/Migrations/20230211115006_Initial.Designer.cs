@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Buildings.Data.Migrations
 {
     [DbContext(typeof(BuildingsContext))]
-    [Migration("20230208225229_Initial")]
+    [Migration("20230211115006_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -108,7 +108,6 @@ namespace Buildings.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PasswordRecoveryToken")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")

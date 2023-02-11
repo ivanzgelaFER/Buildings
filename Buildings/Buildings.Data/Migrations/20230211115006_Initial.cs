@@ -36,7 +36,7 @@ namespace Buildings.Data.Migrations
                     Guid = table.Column<Guid>(type: "uuid", nullable: false),
                     FirstName = table.Column<string>(type: "text", nullable: false),
                     LastName = table.Column<string>(type: "text", nullable: false),
-                    PasswordRecoveryToken = table.Column<string>(type: "text", nullable: false),
+                    PasswordRecoveryToken = table.Column<string>(type: "text", nullable: true),
                     IsEnabled = table.Column<int>(type: "integer", nullable: false),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),

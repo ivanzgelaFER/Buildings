@@ -1,20 +1,21 @@
-import { createRoot } from "react-dom/client";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { App } from "./App";
 import { Provider } from "react-redux";
 import { store } from "./store/configureStore";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./containers/Login/PrivateRoute";
 import { Login } from "./containers/Login/Login";
-import "primeicons/primeicons.css";
-import "primereact/resources/primereact.min.css";
-import { ToastMessage } from "./containers/ToastMessage/ToastMessage";
 import { Signup } from "./containers/Login/Signup";
 import { ForgotPassword } from "./containers/ForgotPassword/ForgotPassword";
 import { ResetPassword } from "./containers/ResetPassword/ResetPassword";
+import { ToastMessage } from "./containers/ToastMessage/ToastMessage";
+import { App } from "./App";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import "./index.css";
 
 const root = createRoot(document.getElementById("root")!);
+
 root.render(
     <Provider store={store}>
         <BrowserRouter>

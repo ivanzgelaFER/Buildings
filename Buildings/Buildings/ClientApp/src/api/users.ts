@@ -72,6 +72,8 @@ export const checkPasswordResetToken = async (token: string) => {
 };
 
 export const resetPassword = async (resetPasswordDto: any) => {
+    console.log("1.korak")
+    console.log(resetPasswordDto)
     return axios.post("/users/resetPassword", resetPasswordDto);
 };
 

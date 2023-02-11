@@ -963,6 +963,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.2",
           "Microsoft.Extensions.Identity.Stores": "7.0.2"
         },
         "compile": {
