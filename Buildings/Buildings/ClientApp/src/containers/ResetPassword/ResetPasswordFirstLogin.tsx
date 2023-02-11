@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearPasswordRecoveryToken } from "../../actions/authentificationActions";
@@ -8,19 +9,17 @@ import { showToastMessage } from "../../actions/toastMessageActions";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Password } from "primereact/password";
-import axios from "axios";
-import "./ResetPasswordFirstLogin.css";
-import { useIntl } from "react-intl";
 import { IChangePassword, initChangePassword } from "../../models/changePassword";
 import { Field, FieldMetaState, Form } from "react-final-form";
 import { classNames } from "primereact/utils";
+import "./ResetPasswordFirstLogin.css";
 
 export const ResetPasswordFirstLogin = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
-    const intl = useIntl();
     const user = useSelector((state: AppState) => state.user);
+    console.log(user);
     const [sendingRequest, setSendingRequest] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 

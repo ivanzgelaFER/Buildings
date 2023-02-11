@@ -44,7 +44,6 @@ namespace Buildings.Data
                 Email = "superAdmin@buildings.app",
                 FirstName = "Super",
                 LastName = "Admin",
-                PasswordRecoveryToken = ""
             };
             await userManager.CreateAsync(superAdmin, superAdminPassword);
             await userManager.AddToRoleAsync(superAdmin, "SuperAdmin");
@@ -58,7 +57,6 @@ namespace Buildings.Data
                 Email = "admin@buildings.app",
                 FirstName = "Admin",
                 LastName = "Person",
-                PasswordRecoveryToken = ""
             };
             await userManager.CreateAsync(admin, adminPassword);
             await userManager.AddToRoleAsync(admin, "Admin");
@@ -72,7 +70,6 @@ namespace Buildings.Data
                 Email = "tenant@buildings.app",
                 FirstName = "Tenant",
                 LastName = "Person",
-                PasswordRecoveryToken = ""
             };
             await userManager.CreateAsync(tenant, tenantPassword);
             await userManager.AddToRoleAsync(tenant, "Tenant");

@@ -105,7 +105,6 @@ namespace Buildings.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("PasswordRecoveryToken")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
