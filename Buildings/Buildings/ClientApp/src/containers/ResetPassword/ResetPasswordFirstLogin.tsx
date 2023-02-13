@@ -19,7 +19,6 @@ export const ResetPasswordFirstLogin = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const user = useSelector((state: AppState) => state.user);
-    console.log(user);
     const [sendingRequest, setSendingRequest] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 

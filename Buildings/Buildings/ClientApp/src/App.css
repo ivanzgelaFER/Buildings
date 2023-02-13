@@ -6,14 +6,14 @@
 }
 
 :root {
-  --aconto-dirty-white: #fbfafa;
-  --aconto-background-gray: #f4f4f4;
-  --aconto-header-background: #242e38;
-  --aconto-header-background-highlight: #2c3944;
-  --aconto-calendar-selected-dates: #a3efb3;
-  --aconto-calendar-previous-dates: #f2df91;
-  --aconto-calendar-workday: #a4e7ff;
-  --aconto-calendar-in-request-status: #f9bcbc;
+  --buildings-dirty-white: #fbfafa;
+  --buildings-background-gray: #f4f4f4;
+  --buildings-header-background: #242e38;
+  --buildings-header-background-highlight: #2c3944;
+  --buildings-calendar-selected-dates: #a3efb3;
+  --buildings-calendar-previous-dates: #f2df91;
+  --buildings-calendar-workday: #a4e7ff;
+  --buildings-calendar-in-request-status: #f9bcbc;
 }
 
 html,
@@ -110,11 +110,11 @@ button.download-button:enabled:hover {
 
 .p-multiselect-panel.p-component.p-connected-overlay-enter-done,
 .p-dropdown-panel.p-component.p-connected-overlay-enter-done {
-    background-color: var(--aconto-dirty-white);
+    background-color: var(--buildings-dirty-white);
 }
 
 .p-multiselect.p-component.p-inputwrapper {
-    background-color: var(--aconto-dirty-white);
+    background-color: var(--buildings-dirty-white);
 }
 
 .create-form-container {
@@ -230,7 +230,7 @@ table.dataview tr td p {
 .p-dialog .p-dialog-header {
     display: flex;
     flex-direction: column-reverse;
-    background-color: var(--aconto-dirty-white) !important;
+    background-color: var(--buildings-dirty-white) !important;
     padding: 0.5rem 1.5rem 1.5rem 1.5rem !important;
 }
 
@@ -245,7 +245,7 @@ table.dataview tr td p {
 .p-dialog .p-dialog-header .p-dialog-title,
 .p-dialog-footer {
     text-align: center !important;
-    background-color: var(--aconto-dirty-white) !important;
+    background-color: var(--buildings-dirty-white) !important;
     font-weight: bold !important;
 }
 
@@ -295,7 +295,7 @@ table.dataview tr td p {
     gap: 1.5rem;
     padding: 1.5rem !important;
     align-items: center;
-    background-color: var(--aconto-dirty-white) !important;
+    background-color: var(--buildings-dirty-white) !important;
 }
 
 .p-dialog .p-dialog-content .submit-buttons-in-modal {
@@ -308,14 +308,7 @@ table.dataview tr td p {
     width: 18rem;
     background-color: #fbfafa !important;
 }
-#layout footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    background-color: #ffffff;
-}
+ 
 .transition-group {
     width: 100%;
     display: flex;
