@@ -10,7 +10,9 @@ export const Header = () => {
 
     const start = (
         <Link to="/" aria-label="Početak headera">
-            <div></div>
+            <div>
+                <i className="fa fa-buiilding-user "></i>
+            </div>
         </Link>
     );
 
@@ -23,7 +25,8 @@ export const Header = () => {
     return (
         <header>
             <div className="menubar">
-                {/*start}
+                {/*start*/}
+                {/*}
                 <nav className="header-content">
                     {headerItems.map(item => {
                         return (
