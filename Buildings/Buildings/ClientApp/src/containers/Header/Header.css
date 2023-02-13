@@ -23,3 +23,8 @@ header .menubar {
     min-width: 120px;
     font-size: 15px !important;
 }
+
+.menubar .fa-building-user {
+    color: white;
+    font-size: 2rem;
+}

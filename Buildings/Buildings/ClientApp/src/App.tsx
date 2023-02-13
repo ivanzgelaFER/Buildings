@@ -1,10 +1,11 @@
+import axios from "axios";
 import { HomePage } from "./containers/HomePage/HomePage";
 import { Layout } from "./containers/Layout/Layout";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { configureAxiosClient } from "./api/axiosClient";
-import axios from "axios";
-import "./App.css";
 import { ResetPasswordFirstLogin } from "./containers/ResetPassword/ResetPasswordFirstLogin";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./App.css";
 
 configureAxiosClient(axios);
 
