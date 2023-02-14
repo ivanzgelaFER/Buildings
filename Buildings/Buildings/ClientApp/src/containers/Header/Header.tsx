@@ -1,23 +1,22 @@
-import { Link } from "react-router-dom";
-import "./Header.css";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../actions/authentificationActions";
-import "primeicons/primeicons.css";
 import { Button } from "primereact/button";
+import "./Header.css";
 
 export const Header = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const start = (
         <Link to="/" aria-label="Početak headera">
-            <div>
-                <i className="fa fa-buiilding-user "></i>
-            </div>
+            <i className="fas fa-building-user" />
         </Link>
     );
 
     const end = (
-        <div className="header-end-buttons">
+        <div className="header-end-section">
+            <Button label="User details" onClick={() => navigate("/userDetails")} />
             <Button label="Logout" onClick={() => dispatch(logout())} />
         </div>
     );
@@ -25,7 +24,7 @@ export const Header = () => {
     return (
         <header>
             <div className="menubar">
-                {/*start*/}
+                {start}
                 {/*}
                 <nav className="header-content">
                     {headerItems.map(item => {
