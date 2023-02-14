@@ -7,10 +7,8 @@ export const HomePage = () => {
 
     return (
         <div className="home-container">
-            <div>
-                <h1>Home page view</h1>
-                <h2>Currently this application use: {`${user.firstName} ${user.lastName}`}</h2>
-            </div>
+            <h1>Home page view</h1>
+            <h2>Currently this application use: {`${user.firstName} ${user.lastName}`}</h2>
         </div>
     );
 };
