@@ -1,6 +1,8 @@
 ﻿using Buildings.Domain.Enums;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Buildings.Domain.Models
 {
@@ -12,5 +14,9 @@ namespace Buildings.Domain.Models
         public string LastName { get; set; }
         public string? PasswordRecoveryToken { get; set; }
         public UserEnabled IsEnabled { get; set; }
+
+        public ResidentialBuilding ResidentialBuilding { get; set; }
+        [ForeignKey("ResidentialBuilding")]
+        public long? ResidentialBuildingId { get; set; }
     }
 }
