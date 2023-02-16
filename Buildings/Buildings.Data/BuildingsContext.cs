@@ -14,12 +14,26 @@ namespace Buildings.Data
         public BuildingsContext() {}
         public BuildingsContext(DbContextOptions<BuildingsContext> options) : base(options) {}
 
-
-        /*
+        public DbSet<ResidentialBuilding> ResidentialBuildings { get; set; }
+        
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<AppUser>()
+                .HasIndex(u => u.Guid)
+                .IsUnique()
+                .HasDatabaseName("AppUserGuid");
+
+            modelBuilder.Entity<AppUser>()
+                .HasIndex(u => u.PasswordRecoveryToken)
+                .IsUnique()
+                .HasDatabaseName("PasswordRecoveryToken");
+            
+            modelBuilder.Entity<AppUser>()
+                .HasOne(u => u.ResidentialBuilding)
+                .WithMany(r => r.Users);
         }
-        */
     }
 }

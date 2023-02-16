@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Buildings.Data.Migrations
 {
     [DbContext(typeof(BuildingsContext))]
-    [Migration("20230211115006_Initial")]
+    [Migration("20230216185408_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -77,7 +77,6 @@ namespace Buildings.Data.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<Guid>("Guid")
@@ -87,7 +86,6 @@ namespace Buildings.Data.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
@@ -128,12 +126,20 @@ namespace Buildings.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Guid")
+                        .IsUnique()
+                        .HasDatabaseName("AppUserGuid");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
+
+                    b.HasIndex("PasswordRecoveryToken")
+                        .IsUnique()
+                        .HasDatabaseName("PasswordRecoveryToken");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
