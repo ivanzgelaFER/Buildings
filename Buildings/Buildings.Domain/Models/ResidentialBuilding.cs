@@ -16,6 +16,6 @@ namespace Buildings.Domain.Models
         public string Name { get; set; }
         public string Address { get; set; }
         
-        //public List<AppUser> Users { get; set; } = new List<AppUser>();
+        public List<AppUser> Users { get; set; } = new List<AppUser>();
     }
 }

@@ -14,7 +14,7 @@ namespace Buildings.Data
         public BuildingsContext() {}
         public BuildingsContext(DbContextOptions<BuildingsContext> options) : base(options) {}
 
-        public DbSet<ResidentialBuilding> ResidentialBuildings { get; set; }
+        //public DbSet<ResidentialBuilding> ResidentialBuildings { get; set; }
         
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)

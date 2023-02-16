@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Buildings.Data.Migrations
 {
     [DbContext(typeof(BuildingsContext))]
-    [Migration("20230216184838_Initial")]
+    [Migration("20230216185408_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -142,28 +142,6 @@ namespace Buildings.Data.Migrations
                         .HasDatabaseName("PasswordRecoveryToken");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("Buildings.Domain.Models.ResidentialBuilding", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("Guid")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ResidentialBuildings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
