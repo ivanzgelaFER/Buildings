@@ -74,7 +74,6 @@ namespace Buildings.Data.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<Guid>("Guid")
@@ -84,7 +83,6 @@ namespace Buildings.Data.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
@@ -125,6 +123,10 @@ namespace Buildings.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Guid")
+                        .IsUnique()
+                        .HasDatabaseName("AppUserGuid");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -132,7 +134,33 @@ namespace Buildings.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
+                    b.HasIndex("PasswordRecoveryToken")
+                        .IsUnique()
+                        .HasDatabaseName("PasswordRecoveryToken");
+
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Buildings.Domain.Models.ResidentialBuilding", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ResidentialBuildings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>

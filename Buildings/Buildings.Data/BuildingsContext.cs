@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Buildings.Domain.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Buildings.Data
 {   
@@ -31,10 +30,10 @@ namespace Buildings.Data
                 .HasIndex(u => u.PasswordRecoveryToken)
                 .IsUnique()
                 .HasDatabaseName("PasswordRecoveryToken");
-
-            modelBuilder.Entity<AppUser>()
+            
+            /*modelBuilder.Entity<AppUser>()
                 .HasOne(u => u.ResidentialBuilding)
                 .WithMany(r => r.Users);
-        }
+        */}
     }
 }
