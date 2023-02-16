@@ -14,7 +14,7 @@ namespace Buildings.Data
         public BuildingsContext() {}
         public BuildingsContext(DbContextOptions<BuildingsContext> options) : base(options) {}
 
-        //public DbSet<ResidentialBuilding> ResidentialBuildings { get; set; }
+        public DbSet<ResidentialBuilding> ResidentialBuildings { get; set; }
         
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,9 +31,9 @@ namespace Buildings.Data
                 .IsUnique()
                 .HasDatabaseName("PasswordRecoveryToken");
             
-            /*modelBuilder.Entity<AppUser>()
+            modelBuilder.Entity<AppUser>()
                 .HasOne(u => u.ResidentialBuilding)
                 .WithMany(r => r.Users);
-        */}
+        }
     }
 }

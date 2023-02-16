@@ -17,8 +17,8 @@ namespace Buildings.Domain.Models
         public string LastName { get; set; }
         public string? PasswordRecoveryToken { get; set; }
         public UserEnabled IsEnabled { get; set; }
-        /*public ResidentialBuilding ResidentialBuilding { get; set; }
+        public ResidentialBuilding ResidentialBuilding { get; set; }
         [ForeignKey("ResidentialBuilding")]
         public long? ResidentialBuildingId { get; set; }
-    */}
+    }
 }
