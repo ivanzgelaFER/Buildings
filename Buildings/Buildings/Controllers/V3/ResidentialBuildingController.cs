@@ -32,6 +32,11 @@ namespace Buildings.Controllers.V3
         {
             return Ok();
         }
+        [HttpPatch]
+        public async Task<IActionResult> EditResidentialBuilding()
+        {
+            return Ok();
+        }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteResidentialBuilding()
