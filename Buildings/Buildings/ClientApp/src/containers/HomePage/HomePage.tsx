@@ -1,14 +1,17 @@
 import { useSelector } from "react-redux";
 import { AppState } from "../../store/configureStore";
+import { BuildingContainer } from "../BuildingContainer/BuildingContainer";
 import "./HomePage.css";
 
 export const HomePage = () => {
     const user = useSelector((state: AppState) => state.user);
 
     return (
-        <div className="home-container">
-            <h1>Home page view edited</h1>
-            <h2>Currently this application use: {`${user.firstName} ${user.lastName}`}</h2>
-        </div>
+        <BuildingContainer title="Residential building informations">
+            <div>
+                <h1>Name</h1>
+                <h2>Address</h2>
+            </div>
+        </BuildingContainer>
     );
 };

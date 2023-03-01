@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Buildings.Domain.Models
 {
@@ -15,7 +10,6 @@ namespace Buildings.Domain.Models
         public Guid Guid { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public string Address { get; set; }
-        
         public List<AppUser> Users { get; set; } = new List<AppUser>();
     }
 }

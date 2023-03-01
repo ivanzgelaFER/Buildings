@@ -1,0 +1,7 @@
+.building-container {
+    margin: 20px 0 15px;
+    max-width: 1500px;
+    width: 100%;
+    z-index: 1;
+    position: relative;
+}
