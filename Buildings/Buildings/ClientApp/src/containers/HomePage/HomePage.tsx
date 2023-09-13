@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { AppState } from "../../store/configureStore";
 import { BuildingContainer } from "../BuildingContainer/BuildingContainer";
+import { TableTemplate } from "../TableTemplate/TableTemplate";
 import "./HomePage.css";
 
 export const HomePage = () => {
@@ -8,10 +9,7 @@ export const HomePage = () => {
 
     return (
         <BuildingContainer title="Residential building informations">
-            <div>
-                <h1>Name</h1>
-                <h2>Address</h2>
-            </div>
+            <TableTemplate value={[]}></TableTemplate>
         </BuildingContainer>
     );
 };

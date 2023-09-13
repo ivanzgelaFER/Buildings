@@ -32,5 +32,11 @@ namespace Buildings.Data.Helpers
         {
             return token.EndsWith("=") ? token : token.PadRight(token.Length + (4 - token.Length % 4) % 4, '=');
         }
+
+        private static void test(string token)
+        {
+            AppUser user = new AppUser();
+            string number = user.FirstName;
+        }
     }
 }
