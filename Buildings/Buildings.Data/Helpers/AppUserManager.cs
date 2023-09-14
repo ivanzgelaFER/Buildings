@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Buildings.Domain.Exceptions;
 using Buildings.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,42 @@ namespace Buildings.Data.Helpers
         private static string AddMissingBase64Padding(string token)
         {
             return token.EndsWith("=") ? token : token.PadRight(token.Length + (4 - token.Length % 4) % 4, '=');
+        }
+
+        private static void test(string token)
+        {
+            AppUser user = new AppUser();
+            string number = user.FirstName;
+        }
+
+        public async Task<string> CheckPasswordError(string pass)
+        {
+            if (string.IsNullOrWhiteSpace(pass)) return "Password field is mandatory.";
+            foreach (IPasswordValidator<AppUser> validator in PasswordValidators)
+            {
+                IdentityResult result = await validator.ValidateAsync(this, null, pass);
+                if (!result.Succeeded) return result.Errors.FirstOrDefault()?.Description;
+            }
+            return null;
+        }
+
+        public async Task<AppUser> CreateUserAsync(AppUser newUser, string password, IEnumerable<string> roles)
+        {
+            string passError = await CheckPasswordError(password);
+            if (!string.IsNullOrEmpty(passError)) throw new AppException(passError);
+            IdentityResult result = await CreateAsync(newUser, password);
+            if (result.Succeeded)
+            {
+                if (roles != null && roles.Any()) await AddToRolesAsync(newUser, roles);
+                newUser.PasswordRecoveryToken = await GeneratePasswordResetTokenAsync(newUser);
+                await UpdateAsync(newUser);
+                return newUser;
+            }
+            else
+            {
+                if (result.Errors.Any(error => error.Code.Contains("DuplicateUserName"))) throw new AppException("Duplicate username");
+                throw new AppException("Unable to create new user");
+            }
         }
     }
 }

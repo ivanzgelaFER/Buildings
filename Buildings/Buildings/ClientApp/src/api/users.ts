@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { IChangePassword } from "../models/changePassword";
+import { UserData } from "../models/userData";
 
 export const login = async (username: string, password: string) => {
     const res = await axios.post("/users/authenticate", { username, password });
@@ -50,11 +51,13 @@ export const getStaffAsProps = async () => {
     const res = await axios.get("/users/props");
     return res.data as StaffState[];
 };
-export const createUser = async (userDto: INewUser) => {
-    const res = await axios.post("/users", userDto);
-    return res.data as UserData;
-};
 
+*/
+export const createUser = async (userDto: UserData) => {
+    const res = await axios.post("/users", userDto);
+    return res.data;
+};
+/*
 export const editUser = async (userDto: UserDetails) => {
     return axios.patch(`/users/${userDto.guid}`, userDto);
 };
