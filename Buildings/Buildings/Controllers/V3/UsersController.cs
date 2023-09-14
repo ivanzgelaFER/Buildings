@@ -173,21 +173,20 @@ namespace Buildings.Controllers.V3
             return Ok();
         }
 
-        /*
+        //everything above is for login and "security" part of this software
+
         [HttpPost]
         [Authorize(Roles = "Admin, SuperAdmin")]
-        public async Task<IActionResult> CreateUser([FromBody] CreateAppUserDto userDto)
+        public async Task<IActionResult> CreateUser([FromBody] AppUserDto userDto)
         {
             AppUser appUser = await userManager.GetUserByGuidAsync(Guid.Parse(User.FindFirstValue("guid")));
             AppUser user = mapper.Map<AppUser>(userDto);
-            user.CompanyId = appUser.CompanyId;
-            user.JobTitle = await context.JobTitles.SingleOrDefaultAsync(jt => jt.Guid == userDto.JobTitleGuid);
-            user.Department = await context.Departments.SingleOrDefaultAsync(jt => jt.Guid == userDto.DepartmentGuid);
+            user.ResidentialBuildingId = appUser.ResidentialBuildingId;
             AppUser newUser = await userManager.CreateUserAsync(user, userDto.Password, userDto.Roles);
-            await mailService.SendUserCreatedEmailAsync(user, userDto.Password, HttpContext.Request.Host.ToUriComponent());
             return Created("", mapper.Map<AppUserDto>(newUser));
         }
 
+        /*
         [HttpGet]
         [Authorize(Roles = "Admin, SuperAdmin")]
         public async Task<IActionResult> GetUsers([FromQuery] PrimeQueryDto query)
