@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Buildings.Data.Migrations;
+using Buildings.Domain.DTOs;
 
 namespace Buildings.Data
 {
@@ -6,8 +8,7 @@ namespace Buildings.Data
     {
         public AutoMapperProfile()
         {
-
-
+            CreateMap<NewResidentialBuildingDto, ResidentialBuilding>();
         }
     }
 }

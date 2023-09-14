@@ -8,15 +8,15 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Buildings.Data
-{   
+{
     public class BuildingsContext : IdentityDbContext<AppUser, AppRole, long>
     {
-        public BuildingsContext() {}
-        public BuildingsContext(DbContextOptions<BuildingsContext> options) : base(options) {}
+        public BuildingsContext() { }
+        public BuildingsContext(DbContextOptions<BuildingsContext> options) : base(options) { }
 
         public DbSet<ResidentialBuilding> ResidentialBuildings { get; set; }
-        
-        
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -30,7 +30,7 @@ namespace Buildings.Data
                 .HasIndex(u => u.PasswordRecoveryToken)
                 .IsUnique()
                 .HasDatabaseName("PasswordRecoveryToken");
-            
+
             modelBuilder.Entity<AppUser>()
                 .HasOne(u => u.ResidentialBuilding)
                 .WithMany(r => r.Users);
