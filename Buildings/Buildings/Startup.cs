@@ -35,7 +35,7 @@ namespace Buildings
             services.Configure<FormOptions>(x => x.MultipartBodyLengthLimit = int.MaxValue);
 
             IMapper mapper = new MapperConfiguration(mc => mc.AddProfile(new AutoMapperProfile())).CreateMapper();
-            services.AddSingleton(mapper);  //mapper has been added as singleton because this service won't change in the future through application runtime)
+            services.AddSingleton(mapper);  //mapper has been added as singleton because this service won't change in the future through application runtime
 
             LockoutSettings lockoutSettings = ConfigurationBinder.Get<LockoutSettings>(Configuration.GetSection("Lockout"));
 
