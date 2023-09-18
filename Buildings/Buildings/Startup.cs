@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Mvc.Versioning.Conventions;
 using Buildings.Domain.Enums;
+using Buildings.Data.Services;
 
 namespace Buildings
 {
@@ -118,7 +119,7 @@ namespace Buildings
 
             services.AddCustomSwagger();
 
-            //services.AddScoped<IProjectsService, ProjectsService>();
+            services.AddScoped<IResidentialBuildingService, ResidentialBuildingService>();
 
             /*
             services = Configuration["Store"] switch

@@ -3,12 +3,14 @@ using Buildings.Data.Helpers;
 using Buildings.Domain.DTOs;
 using Buildings.Domain.Exceptions;
 using Buildings.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Buildings.Data.Services
 {
     public interface IResidentialBuildingService
     {
         Task CreateResidentialBuilding(NewResidentialBuildingDto dto, AppUser user);
+        Task<List<ResidentialBuildingDto>> GetResidentialBuildings(AppUser user);
     }
 
     public class ResidentialBuildingService : IResidentialBuildingService
@@ -22,9 +24,16 @@ namespace Buildings.Data.Services
             this.context = context;
             this.userManager = userManager;
         }
+
+        public async Task<List<ResidentialBuildingDto>> GetResidentialBuildings(AppUser user)
+        {
+            List<ResidentialBuilding> buildings = await context.ResidentialBuildings.Where(rb => rb.CreatedById == user.Id).ToListAsync();
+            return mapper.Map<List<ResidentialBuildingDto>>(buildings);
+        }
         public async Task CreateResidentialBuilding(NewResidentialBuildingDto dto, AppUser user)
         {
             ResidentialBuilding residentialBuilding = mapper.Map<ResidentialBuilding>(dto);
+            residentialBuilding.CreatedById = user.Id;
             await context.ResidentialBuildings.AddAsync(residentialBuilding);
 
             AppUser newUser = new()

@@ -31,9 +31,6 @@ namespace Buildings.Data
                 .IsUnique()
                 .HasDatabaseName("PasswordRecoveryToken");
 
-            modelBuilder.Entity<AppUser>()
-                .HasOne(u => u.ResidentialBuilding)
-                .WithMany(r => r.Users);
         }
     }
 }

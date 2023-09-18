@@ -2,7 +2,7 @@
 
 namespace Buildings.Domain.Models
 {
-    public class ResidentialBuilding
+    public class ResidentialBuilding : Fingerprint
     {
         [Key]
         public long Id { get; set; }
@@ -10,6 +10,5 @@ namespace Buildings.Domain.Models
         public Guid Guid { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public string Address { get; set; }
-        public List<AppUser> Users { get; set; } = new List<AppUser>();
     }
 }

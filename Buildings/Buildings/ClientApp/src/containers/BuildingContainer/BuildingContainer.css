@@ -5,3 +5,40 @@
     z-index: 1;
     position: relative;
 }
+
+.building-container .building-container-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.building-container .building-container-header i.building-container-back-icon {
+    visibility: visible;
+}
+
+.building-container-title {
+    align-self: end;
+}
+
+.building-container-header-items {
+    margin-left: auto;
+    padding-bottom: 5px;
+}
+
+.building-container .building-container.content {
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.building-container .building-container.content .content {
+    position: relative;
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px 50px;
+    z-index: 2;
+    overflow: hidden;
+    min-height: 105px;
+    box-sizing: border-box;
+}

@@ -32,7 +32,8 @@ namespace Buildings.Controllers.V3
         [HttpGet]
         public async Task<IActionResult> GetResidentialBuilding()
         {
-            return Empty;
+            AppUser user = await context.Users.SingleOrDefaultAsync(u => u.Guid == Guid.Parse(User.FindFirstValue("guid")));
+            return Ok(await residentialBuildingService.GetResidentialBuildings(user));
         }
 
         [HttpPost]
