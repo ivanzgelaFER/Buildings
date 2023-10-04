@@ -1,6 +1,7 @@
 export interface IResidentialBuiding {
     name: string;
     address: string;
+    guid?: string;
 }
 
 export const residentialBuildingInit: IResidentialBuiding = {

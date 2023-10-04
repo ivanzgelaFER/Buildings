@@ -33,6 +33,7 @@ export const Login = () => {
             <RedirectIfLoggedIn />
             <div className="center-login-container">
                 <section className="login-form-container">
+                    <i className="fas fa-building-user" />
                     <div className="p-inputgroup">
                         <span className="p-inputgroup-addon">
                             <i className="pi pi-user"></i>

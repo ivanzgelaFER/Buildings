@@ -123,6 +123,10 @@
     margin-bottom: 15%; 
 }
 
+.login-form-container .fa-building-user {
+    font-size: 4rem;
+    color: rgb(185, 183, 183);
+}
 /*responsive part */
 
 @media only screen and (max-width: 635px) {
