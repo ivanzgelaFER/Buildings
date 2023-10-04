@@ -50,6 +50,7 @@ namespace Buildings.Data
 
             superAdmin.PasswordRecoveryToken = await userManager.GeneratePasswordResetTokenAsync(superAdmin);
             await userManager.UpdateAsync(superAdmin);
+
             //ADMIN
             AppUser admin = new()
             {

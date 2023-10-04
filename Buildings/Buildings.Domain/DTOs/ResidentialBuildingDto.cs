@@ -1,6 +1,6 @@
 namespace Buildings.Domain.DTOs
 {
-    public class ResidentialBuildings
+    public class ResidentialBuildingDto
     {
         public Guid Guid { get; set; }
         public string Name { get; set; }
