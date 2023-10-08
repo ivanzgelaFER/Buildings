@@ -1,0 +1,17 @@
+.residential-building-form-container {
+    width: 30%;
+    min-width: 400px;
+    padding-top: 15px;
+}
+
+.residential-building-form-container > .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: normal;
+}
+
+
+.residential-building-form-container .form-container .p-component {
+    width: 100%;
+}

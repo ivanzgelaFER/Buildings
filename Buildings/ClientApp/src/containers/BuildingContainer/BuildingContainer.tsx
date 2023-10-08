@@ -1,8 +1,8 @@
 import { ReactNode } from "react";
 import { ProgressSpinner } from "primereact/progressspinner";
-import "./BuildingContainer.css";
 import { Tooltip } from "primereact/tooltip";
 import { classNames } from "primereact/utils";
+import "./BuildingContainer.css";
 
 interface BuildingContainerProps {
     children: ReactNode;
@@ -30,16 +30,16 @@ export const BuildingContainer = ({
 }: BuildingContainerProps) => {
     return (
         <div className="building-container" {...props}>
-            {(title || backAction) && (
+            {(title || backAction || headerItems) && (
                 <div className="building-container-header">
-                    <Tooltip target=""></Tooltip>
+                    <Tooltip target=".building-container-back-icon"></Tooltip>
                     <i
                         data-pr-tooltip="Back"
                         className={`pi pi-angle-left ${
                             backAction ? "building-container-back-icon" : ""
                         }`}
                         onClick={backAction}
-                    ></i>
+                    />
                     {title && <h2 className="building-container-title">{title}</h2>}
                     {headerItems && (
                         <div className="building-container-header-items">{headerItems}</div>

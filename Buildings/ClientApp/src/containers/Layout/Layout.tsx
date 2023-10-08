@@ -16,9 +16,11 @@ export const Layout = (props: any) => {
         <div id="layout">
             <Header />
             <div id="layout-columns">
-                <main className="main">{props.children}</main>
+                <div className="main-column">
+                    <main className="main">{props.children}</main>
+                    <Footer />
+                </div>
             </div>
-            <Footer />
         </div>
     );
 };

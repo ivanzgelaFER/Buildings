@@ -12,27 +12,56 @@
     align-items: flex-start;
 }
 
+.building-container .building-container-header h2 {
+    margin: 0;
+    margin-left: 20px;
+    padding: 10px 30px;
+    color: white;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.building-container .building-container-header i.pi {
+    visibility: hidden;
+    align-self: center;
+    font-size: 36px;
+    color: #898989;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
 .building-container .building-container-header i.building-container-back-icon {
     visibility: visible;
 }
 
-.building-container-title {
-    align-self: end;
-}
-
-.building-container-header-items {
+.building-container .building-container-header .building-container-header-items {
     margin-left: auto;
     padding-bottom: 5px;
 }
 
-.building-container .building-container.content {
+.building-container .building-container-header .building-container-header-items > * {
+    margin-left: 10px;
+}
+
+.building-container .building-container-header .building-container-header-items button {
+    flex-shrink: 0;
+}
+
+.building-container .building-container-header .building-container-title {
+    align-self: end;
+}
+
+.building-container .building-container-content {
     background-color: white;
     border-radius: 15px;
     position: relative;
     z-index: 1;
 }
 
-.building-container .building-container.content .content {
+.building-container .building-container-content .content {
     position: relative;
     background-color: white;
     border-radius: 15px;
@@ -41,4 +70,32 @@
     overflow: hidden;
     min-height: 105px;
     box-sizing: border-box;
+}
+
+.building-container .building-container-content.no-padding .content {
+    padding: 0;
+}
+
+.building-container .building-container-content.fullscreen .content {
+    min-height: calc(100vh - 244px);
+    display: flex;
+    flex-direction: column;
+}
+
+.building-container .building-container-content.centered-content .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.building-container .building-container-content .content > .p-datatable:last-child .p-datatable-wrapper:last-child tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.building-container .building-container-content .p-tabview-nav-next {
+    display: none;
+}
+
+.building-container:has(.add-form) {
+    max-width: 50%;
 }
