@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AppState } from "../../store/configureStore";
 import { Button } from "primereact/button";
+import { showToastMessage } from "../../actions/toastMessageActions";
 
 const cols = [
     { field: "name", header: "Name", sortable: true },
@@ -19,12 +20,18 @@ export const Buildings = () => {
     const dispatch = useDispatch();
     const [buildings, setBuildings] = useState<IResidentialBuiding[]>([]);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const fetchBuildings = useCallback(async () => {
+        setLoading(true);
         try {
             const res = await getResidentialBuildings();
             setBuildings(res);
-        } catch (error) {}
+        } catch (error) {
+            dispatch(showToastMessage("Unable to fetch residential buildings", "error"));
+        } finally {
+            setLoading(false);
+        }
     }, [dispatch]);
 
     useEffect(() => {
@@ -33,10 +40,11 @@ export const Buildings = () => {
 
     return (
         <BuildingContainer
-            title={"List of owning buildings"}
+            title={"List of registrated buildings"}
+            loading={loading}
             headerItems={
                 <Button
-                    label="Add building"
+                    label="Add new"
                     icon="pi pi-plus"
                     onClick={() => navigate("buildings/add")}
                 />

@@ -11,7 +11,7 @@ import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import "./Buildings.css";
 
-export const BuildingsForm = () => {
+export const BuildingForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);

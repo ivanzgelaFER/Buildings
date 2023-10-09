@@ -9,8 +9,9 @@ namespace Buildings.Data.Services
 {
     public interface IResidentialBuildingService
     {
-        Task CreateResidentialBuilding(NewResidentialBuildingDto dto, AppUser user);
         Task<List<ResidentialBuildingDto>> GetResidentialBuildings(AppUser user);
+        Task<ResidentialBuildingDto> GetResidentialBuildingByGuid(Guid guid);
+        Task CreateResidentialBuilding(NewResidentialBuildingDto dto, AppUser user);
     }
 
     public class ResidentialBuildingService : IResidentialBuildingService
@@ -29,6 +30,12 @@ namespace Buildings.Data.Services
         {
             List<ResidentialBuilding> buildings = await context.ResidentialBuildings.Where(rb => rb.CreatedById == user.Id).ToListAsync();
             return mapper.Map<List<ResidentialBuildingDto>>(buildings);
+        }
+        public async Task<ResidentialBuildingDto> GetResidentialBuildingByGuid(Guid guid)
+        {
+            ResidentialBuilding building = await context.ResidentialBuildings.SingleOrDefaultAsync(rb => rb.Guid == guid);
+            ResidentialBuildingDto dto = mapper.Map<ResidentialBuildingDto>(building);
+            return dto;
         }
         public async Task CreateResidentialBuilding(NewResidentialBuildingDto dto, AppUser user)
         {
@@ -53,5 +60,6 @@ namespace Buildings.Data.Services
                 throw new AppException("User and company cannot be created");
             }
         }
+
     }
 }

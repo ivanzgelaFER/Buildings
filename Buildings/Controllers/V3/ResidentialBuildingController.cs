@@ -29,15 +29,23 @@ namespace Buildings.Controllers.V3
             this.context = context;
             this.residentialBuildingService = residentialBuildingService;
         }
-        [HttpGet]
-        public async Task<IActionResult> GetResidentialBuilding()
+        [HttpGet("all")]
+        [Authorize(Roles = "SuperAdmin")]
+        public async Task<IActionResult> GetResidentialBuildings()
         {
             AppUser user = await context.Users.SingleOrDefaultAsync(u => u.Guid == Guid.Parse(User.FindFirstValue("guid")));
             return Ok(await residentialBuildingService.GetResidentialBuildings(user));
         }
 
+        [HttpGet("{guid}")]
+        [Authorize(Roles = "SuperAdmin")]
+        public async Task<IActionResult> GetResidentialBuildingByGuid([FromRoute] Guid guid)
+        {
+            return Ok(await residentialBuildingService.GetResidentialBuildingByGuid(guid));
+        }
+
         [HttpPost]
-        //[Authorize(Roles = "SuperAdmin")]
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> CreateResidentialBuilding([FromBody] NewResidentialBuildingDto dto)
         {
             AppUser user = await context.Users.SingleOrDefaultAsync(u => u.Guid == Guid.Parse(User.FindFirstValue("guid")));
