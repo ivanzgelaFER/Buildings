@@ -20,3 +20,8 @@ export const editResidentialBuilding = async (data: IResidentialBuiding) => {
     const response = await axios.patch("/residentialBuilding", data);
     return response.data as IResidentialBuiding;
 };
+
+export const deleteResidentialBuilding = async (guid: string) => {
+    console.log(guid);
+    await axios.delete(`/residentialBuilding/${guid}`);
+}

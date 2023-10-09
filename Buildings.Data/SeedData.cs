@@ -24,8 +24,15 @@ namespace Buildings.Data
             string superAdminPassword = config.GetSection("SeedPasswordSuperAdmin").Value;
             string tenantPassword = config.GetSection("SeedPasswordTenant").Value;
 
+            if (!await ctx.ResidentialBuildings.AnyAsync()) await SeedResidentialBuilding(ctx);
             if (!await ctx.Roles.AnyAsync()) await SeedRolesAsync(roleManager);
             if (!await ctx.Users.AnyAsync()) await SeedUsersAsync(userManager, adminPassword, superAdminPassword, tenantPassword, ctx);
+        }
+
+        private static async Task SeedResidentialBuilding(BuildingsContext context)
+        {
+            context.ResidentialBuildings.Add(new ResidentialBuilding { Name = "Super admin hotel", Address = "Jarunska ulica 2" });
+            await context.SaveChangesAsync();
         }
 
         private static async Task SeedRolesAsync(RoleManager<AppRole> roleManager)
@@ -37,6 +44,7 @@ namespace Buildings.Data
 
         private static async Task SeedUsersAsync(UserManager<AppUser> userManager, string adminPassword, string superAdminPassword, string tenantPassword, BuildingsContext context)
         {
+            ResidentialBuilding seedResidentialBuilding = await context.ResidentialBuildings.OrderBy(rb => rb.Id).FirstAsync();
             //SUPERADMIN
             AppUser superAdmin = new()
             {
@@ -44,6 +52,7 @@ namespace Buildings.Data
                 Email = "superAdmin@buildings.app",
                 FirstName = "Super",
                 LastName = "Admin",
+                ResidentialBuilding = seedResidentialBuilding
             };
             await userManager.CreateAsync(superAdmin, superAdminPassword);
             await userManager.AddToRoleAsync(superAdmin, "SuperAdmin");
@@ -58,6 +67,7 @@ namespace Buildings.Data
                 Email = "admin@buildings.app",
                 FirstName = "Admin",
                 LastName = "Person",
+                ResidentialBuilding = seedResidentialBuilding
             };
             await userManager.CreateAsync(admin, adminPassword);
             await userManager.AddToRoleAsync(admin, "Admin");
@@ -71,12 +81,14 @@ namespace Buildings.Data
                 Email = "tenant@buildings.app",
                 FirstName = "Tenant",
                 LastName = "Person",
+                ResidentialBuilding = seedResidentialBuilding
             };
             await userManager.CreateAsync(tenant, tenantPassword);
             await userManager.AddToRoleAsync(tenant, "Tenant");
 
             tenant.PasswordRecoveryToken = await userManager.GeneratePasswordResetTokenAsync(tenant);
             await userManager.UpdateAsync(tenant);
+
         }
     }
 }

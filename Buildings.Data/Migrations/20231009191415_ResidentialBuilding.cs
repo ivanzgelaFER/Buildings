@@ -16,7 +16,8 @@ namespace Buildings.Data.Migrations
                 name: "ResidentialBuildingId",
                 table: "AspNetUsers",
                 type: "bigint",
-                nullable: true);
+                nullable: false,
+                defaultValue: 0L);
 
             migrationBuilder.CreateTable(
                 name: "ResidentialBuildings",
@@ -43,7 +44,8 @@ namespace Buildings.Data.Migrations
                 table: "AspNetUsers",
                 column: "ResidentialBuildingId",
                 principalTable: "ResidentialBuildings",
-                principalColumn: "Id");
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />

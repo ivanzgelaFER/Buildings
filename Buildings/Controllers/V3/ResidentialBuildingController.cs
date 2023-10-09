@@ -6,7 +6,6 @@ using Buildings.Data.Services;
 using Buildings.Domain.DTOs;
 using Buildings.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -61,12 +60,15 @@ namespace Buildings.Controllers.V3
             bool isSuperAdmin = await userManager.IsInRoleAsync(user, "SuperAdmin");
             return Ok(await residentialBuildingService.EditResidentialBuilding(dto));
         }
-        /*
-        [HttpDelete]
-        public async Task<IActionResult> DeleteResidentialBuilding()
+
+
+        [HttpDelete("{guid}")]
+        [Authorize(Roles = "SuperAdmin")]
+        public async Task<IActionResult> DeleteResidentialBuilding([FromRoute] Guid guid)
         {
+            AppUser user = await context.Users.SingleOrDefaultAsync(u => u.Guid == Guid.Parse(User.FindFirstValue("guid")));
+            await residentialBuildingService.DeleteResidentialBuilding(guid, user.ResidentialBuildingId);
             return Ok();
         }
-        */
     }
 }

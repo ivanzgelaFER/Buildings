@@ -15,6 +15,6 @@ namespace Buildings.Domain.Models
         public UserEnabled IsEnabled { get; set; }
         public ResidentialBuilding ResidentialBuilding { get; set; }
         [ForeignKey("ResidentialBuilding")]
-        public long? ResidentialBuildingId { get; set; }
+        public long ResidentialBuildingId { get; set; }
     }
 }

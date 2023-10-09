@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BuildingContainer } from "../BuildingContainer/BuildingContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { Dispatch, SetStateAction, useCallback, useEffect, useState } from "react";
@@ -17,7 +17,6 @@ import { InputText } from "primereact/inputtext";
 
 interface Props {
     buildingDetails: IResidentialBuiding;
-    setBuildingDetails: Dispatch<SetStateAction<IResidentialBuiding>>;
     loading: boolean;
     setLoading: Dispatch<SetStateAction<boolean>>;
     getResidentialBuilding: () => Promise<void>;
@@ -26,7 +25,6 @@ interface Props {
 
 export const BuildingDetails = ({
     buildingDetails,
-    setBuildingDetails,
     loading,
     setLoading,
     getResidentialBuilding,

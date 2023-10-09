@@ -14,6 +14,7 @@ namespace Buildings.Data.Services
         Task<ResidentialBuildingDto> GetResidentialBuildingByGuid(Guid guid);
         Task CreateResidentialBuilding(NewResidentialBuildingDto dto, AppUser user);
         Task<ResidentialBuilding> EditResidentialBuilding(ResidentialBuildingDto dto);
+        Task DeleteResidentialBuilding(Guid guid, long residentialBuildingId);
     }
 
     public class ResidentialBuildingService : IResidentialBuildingService
@@ -30,7 +31,7 @@ namespace Buildings.Data.Services
 
         public async Task<List<ResidentialBuildingDto>> GetResidentialBuildings(AppUser user)
         {
-            List<ResidentialBuilding> buildings = await context.ResidentialBuildings.Where(rb => rb.CreatedById == user.Id).ToListAsync();
+            List<ResidentialBuilding> buildings = await context.ResidentialBuildings.ToListAsync();
             return mapper.Map<List<ResidentialBuildingDto>>(buildings);
         }
         public async Task<ResidentialBuildingDto> GetResidentialBuildingByGuid(Guid guid)
@@ -42,7 +43,6 @@ namespace Buildings.Data.Services
         public async Task CreateResidentialBuilding(NewResidentialBuildingDto dto, AppUser user)
         {
             ResidentialBuilding residentialBuilding = mapper.Map<ResidentialBuilding>(dto);
-            residentialBuilding.CreatedById = user.Id;
             await context.ResidentialBuildings.AddAsync(residentialBuilding);
 
             AppUser newUser = new()
@@ -70,6 +70,13 @@ namespace Buildings.Data.Services
 
             await context.SaveChangesAsync();
             return building;
+        }
+        public async Task DeleteResidentialBuilding(Guid guid, long residentialBuildingId)
+        {
+            ResidentialBuilding building = await context.ResidentialBuildings.Where(rb => rb.Guid == guid).SingleOrDefaultAsync() ?? throw new NotFoundException("Residential building not found");
+            if (building.Id == residentialBuildingId) throw new NotFoundException("Residential building cannot be deleted");
+            context.ResidentialBuildings.Remove(building);
+            await context.SaveChangesAsync();
         }
 
     }

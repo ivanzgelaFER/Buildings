@@ -12,15 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Buildings.Data.Migrations
 {
     [DbContext(typeof(BuildingsContext))]
-    [Migration("20230918160927_addedFingerprintResidentialBuilding")]
-    partial class addedFingerprintResidentialBuilding
+    [Migration("20231009191415_ResidentialBuilding")]
+    partial class ResidentialBuilding
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -114,7 +114,7 @@ namespace Buildings.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("boolean");
 
-                    b.Property<long?>("ResidentialBuildingId")
+                    b.Property<long>("ResidentialBuildingId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("SecurityStamp")
@@ -160,12 +160,6 @@ namespace Buildings.Data.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<long>("CreatedById")
-                        .HasColumnType("bigint");
-
                     b.Property<Guid>("Guid")
                         .HasColumnType("uuid");
 
@@ -173,8 +167,6 @@ namespace Buildings.Data.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
 
                     b.ToTable("ResidentialBuildings");
                 });
@@ -286,20 +278,11 @@ namespace Buildings.Data.Migrations
                 {
                     b.HasOne("Buildings.Domain.Models.ResidentialBuilding", "ResidentialBuilding")
                         .WithMany()
-                        .HasForeignKey("ResidentialBuildingId");
-
-                    b.Navigation("ResidentialBuilding");
-                });
-
-            modelBuilder.Entity("Buildings.Domain.Models.ResidentialBuilding", b =>
-                {
-                    b.HasOne("Buildings.Domain.Models.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
+                        .HasForeignKey("ResidentialBuildingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CreatedBy");
+                    b.Navigation("ResidentialBuilding");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>

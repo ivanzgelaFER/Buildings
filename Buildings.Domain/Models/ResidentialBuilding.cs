@@ -2,7 +2,7 @@
 
 namespace Buildings.Domain.Models
 {
-    public class ResidentialBuilding : Fingerprint
+    public class ResidentialBuilding
     {
         [Key]
         public long Id { get; set; }
