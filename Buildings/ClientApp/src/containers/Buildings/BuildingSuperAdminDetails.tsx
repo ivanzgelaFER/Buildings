@@ -4,34 +4,44 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getResidentialBuildingByGuid } from "../../api/residentialBuilding";
 import { showToastMessage } from "../../actions/toastMessageActions";
-import { IResidentialBuiding } from "../../models/residentialBuilding";
-import { BuildingDetail } from "./BuildingDetail";
+import { residentialBuildingInit } from "../../models/residentialBuilding";
+import { BuildingDetails } from "./BuildingDetails";
 
 export const BuildingSuperAdminDetails = () => {
     const dispatch = useDispatch();
     const { guid } = useParams();
     const [loading, setLoading] = useState(false);
-    const [buildingDetails, setBuildingDetails] = useState<IResidentialBuiding>();
+    const [buildingDetails, setBuildingDetails] = useState(residentialBuildingInit);
+    const [deleteDialog, setDeleteDialog] = useState(false);
 
-    const getResidentialBuildings = useCallback(async () => {
+    const getResidentialBuilding = useCallback(async () => {
         setLoading(true);
         try {
             const res = await getResidentialBuildingByGuid(guid ?? "");
             setBuildingDetails(res);
         } catch (error) {
-            dispatch(showToastMessage("Error while fetching company", "error"));
+            dispatch(showToastMessage("Error while fetching residential building", "error"));
         } finally {
             setLoading(false);
         }
     }, [guid, dispatch]);
 
     useEffect(() => {
-        getResidentialBuildings();
-    }, [getResidentialBuildings]);
+        getResidentialBuilding();
+    }, [getResidentialBuilding]);
 
     return (
-        <BuildingContainer title="Residential building super admin details">
-            {buildingDetails && <BuildingDetail />}
+        <BuildingContainer>
+            {buildingDetails && (
+                <BuildingDetails
+                    buildingDetails={buildingDetails}
+                    setBuildingDetails={setBuildingDetails}
+                    loading={loading}
+                    setLoading={setLoading}
+                    getResidentialBuilding={getResidentialBuilding}
+                    setDeleteDialog={() => setDeleteDialog(true)}
+                />
+            )}
         </BuildingContainer>
     );
 };

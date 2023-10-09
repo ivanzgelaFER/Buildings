@@ -52,13 +52,16 @@ namespace Buildings.Controllers.V3
             await residentialBuildingService.CreateResidentialBuilding(dto, user);
             return Ok();
         }
-        /*
-        [HttpPatch]
-        public async Task<IActionResult> EditResidentialBuilding()
-        {
-            return Ok();
-        }
 
+        [HttpPatch]
+        [Authorize(Roles = "Admin, SuperAdmin")]
+        public async Task<IActionResult> PatchResidentialBuilding([FromBody] ResidentialBuildingDto dto)
+        {
+            AppUser user = await context.Users.SingleOrDefaultAsync(u => u.Guid == Guid.Parse(User.FindFirstValue("guid")));
+            bool isSuperAdmin = await userManager.IsInRoleAsync(user, "SuperAdmin");
+            return Ok(await residentialBuildingService.EditResidentialBuilding(dto));
+        }
+        /*
         [HttpDelete]
         public async Task<IActionResult> DeleteResidentialBuilding()
         {

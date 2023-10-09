@@ -1,3 +1,4 @@
+using Aconto.Data.Helpers;
 using AutoMapper;
 using Buildings.Data.Helpers;
 using Buildings.Domain.DTOs;
@@ -12,6 +13,7 @@ namespace Buildings.Data.Services
         Task<List<ResidentialBuildingDto>> GetResidentialBuildings(AppUser user);
         Task<ResidentialBuildingDto> GetResidentialBuildingByGuid(Guid guid);
         Task CreateResidentialBuilding(NewResidentialBuildingDto dto, AppUser user);
+        Task<ResidentialBuilding> EditResidentialBuilding(ResidentialBuildingDto dto);
     }
 
     public class ResidentialBuildingService : IResidentialBuildingService
@@ -59,6 +61,15 @@ namespace Buildings.Data.Services
             {
                 throw new AppException("User and company cannot be created");
             }
+        }
+        public async Task<ResidentialBuilding> EditResidentialBuilding(ResidentialBuildingDto dto)
+        {
+            ResidentialBuilding building = await context.ResidentialBuildings.Where(rb => rb.Guid == dto.Guid).SingleOrDefaultAsync() ?? throw new NotFoundException("Residential building not found");
+            UpdateHelper.CopyProperties(dto, building);
+            context.ResidentialBuildings.Update(building);
+
+            await context.SaveChangesAsync();
+            return building;
         }
 
     }
