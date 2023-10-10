@@ -1,0 +1,9 @@
+https://localhost:44378/api/v3/ResidentialBuilding
+{
+    "Name": "Obitelj Zgela",
+    "Address": "Kostelceva 654",
+    "UserName": "ivanzgela@buildings.com",
+    "AdminPassword": "Qwertzu1,",
+    "FirstName": "Jure",
+    "LastName": "Zgela"
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram version="1" name="InitialBuildingsDB.erd">
+	<entities>
+		<data-source id="postgres-jdbc-186333f364e-744ac83033c37129">
+			<entity id="1" name="AspNetRoleClaims" fq-name="public.&quot;AspNetRoleClaims&quot;" order="0" x="67" y="36">
+				<path name="public"/>
+				<path name="Buildings"/>
+			</entity>
+			<entity id="2" name="AspNetRoles" fq-name="public.&quot;AspNetRoles&quot;" order="1" x="495" y="23">
+				<path name="public"/>
+				<path name="Buildings"/>
+			</entity>
+			<entity id="3" name="AspNetUserClaims" fq-name="public.&quot;AspNetUserClaims&quot;" order="2" x="61" y="304">
+				<path name="public"/>
+				<path name="Buildings"/>
+			</entity>
+			<entity id="4" name="AspNetUserLogins" fq-name="public.&quot;AspNetUserLogins&quot;" order="3" x="61" y="475">
+				<path name="public"/>
+				<path name="Buildings"/>
+			</entity>
+			<entity id="5" name="AspNetUserRoles" fq-name="public.&quot;AspNetUserRoles&quot;" order="4" x="249" y="205">
+				<path name="public"/>
+				<path name="Buildings"/>
+			</entity>
+			<entity id="6" name="AspNetUserTokens" fq-name="public.&quot;AspNetUserTokens&quot;" order="5" x="279" y="655">
+				<path name="public"/>
+				<path name="Buildings"/>
+			</entity>
+			<entity id="7" name="AspNetUsers" fq-name="public.&quot;AspNetUsers&quot;" order="6" x="520" y="250">
+				<path name="public"/>
+				<path name="Buildings"/>
+			</entity>
+			<entity id="8" name="__EFMigrationsHistory" fq-name="public.&quot;__EFMigrationsHistory&quot;" order="7" x="775" y="47">
+				<path name="public"/>
+				<path name="Buildings"/>
+			</entity>
+		</data-source>
+	</entities>
+	<relations>
+		<relation name="FK_AspNetRoleClaims_AspNetRoles_RoleId" fq-name="public.&quot;AspNetRoleClaims&quot;.&quot;FK_AspNetRoleClaims_AspNetRoles_RoleId&quot;" type="fk" pk-ref="2" fk-ref="1"/>
+		<relation name="FK_AspNetUserRoles_AspNetRoles_RoleId" fq-name="public.&quot;AspNetUserRoles&quot;.&quot;FK_AspNetUserRoles_AspNetRoles_RoleId&quot;" type="fk" pk-ref="2" fk-ref="5"/>
+		<relation name="FK_AspNetUserClaims_AspNetUsers_UserId" fq-name="public.&quot;AspNetUserClaims&quot;.&quot;FK_AspNetUserClaims_AspNetUsers_UserId&quot;" type="fk" pk-ref="7" fk-ref="3"/>
+		<relation name="FK_AspNetUserLogins_AspNetUsers_UserId" fq-name="public.&quot;AspNetUserLogins&quot;.&quot;FK_AspNetUserLogins_AspNetUsers_UserId&quot;" type="fk" pk-ref="7" fk-ref="4"/>
+		<relation name="FK_AspNetUserRoles_AspNetUsers_UserId" fq-name="public.&quot;AspNetUserRoles&quot;.&quot;FK_AspNetUserRoles_AspNetUsers_UserId&quot;" type="fk" pk-ref="7" fk-ref="5"/>
+		<relation name="FK_AspNetUserTokens_AspNetUsers_UserId" fq-name="public.&quot;AspNetUserTokens&quot;.&quot;FK_AspNetUserTokens_AspNetUsers_UserId&quot;" type="fk" pk-ref="7" fk-ref="6"/>
+	</relations>
+</diagram>

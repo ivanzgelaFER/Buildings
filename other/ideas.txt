@@ -1,0 +1,12 @@
+-Superadmin je vlasnik zgrade koji moze kreirati objekt
+(zgradu, kucu koja ima n katova i svaki kat ima odredeni broj stanova, adresa(drzava, grad, ulica, broj, postanski broj), ime zgrade po kojoj ju prepoznaje
+takoder bitno je da prilikom dodavanja zgrade unutar forme postavimo administratora(osobu koja je predvodnik stanara koja radi za vlasnika) njeno ime prezime, 
+username i password pomocu kojeg ce se prijavljivati privi put ta doticna osoba) - ta osoba mora po prvi put promijeniti lozinku
+-kad je kreiran admin sljedeci korak je da admin dodaje nove korisnike, admin imenuje stan i kreira korisnika koji ce biti zaduzen za odrzavanje tog stana i placanje svih racuna
+-kad admin kraira korisnika i pridjeli mu stan onda se tom korisniku omoguce njegova prava za prikaz troskova (mjesecnih, godisnjih), tu takoder ti podatci mogu biti prikazani 
+grafom po mjesecima tu moras smisliti koji su use-caseovi za tog korisnika i sta ce mu biti omoguceno u softwareu ali ideja je da moze placati racune
+-osim toga bilo bi zanimljivo da ima uvid u prosjecnu mjesecnu potrosnju i da moze staviti ogranicenje koje ce ga upozoriti da je previse potrosio, samim time mu dolazi neki
+mail da je prekoracio taj iznos tu ces malo testirati taj mail server
+-bilo bi zanimljivo da napravis neke push notifikacije u sustavu 
+-takoder probaj istraziti utjecaj AI-a i mozda da napravis neku trazilicu ili neki chat koji bi omogucio koristenje AI tehnologije ili cak neki algoritam, treniranje modela nekog
+vidi jos i istrazuj 
