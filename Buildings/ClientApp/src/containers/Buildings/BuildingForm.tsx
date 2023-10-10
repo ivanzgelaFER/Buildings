@@ -25,7 +25,7 @@ export const BuildingForm = () => {
             dispatch(showToastMessage("Unable to add new residential building", "error"));
         } finally {
             setLoading(false);
-            navigate("*");
+            navigate("/buildings/all");
         }
     };
 

@@ -10,6 +10,7 @@ import { UserDetailsForm } from "./containers/UserDetails/UserDetailsForm";
 import { Buildings } from "./containers/Buildings/Buildings";
 import { BuildingForm } from "./containers/Buildings/BuildingForm";
 import { BuildingSuperAdminDetails } from "./containers/Buildings/BuildingSuperAdminDetails";
+import { HomePage } from "./containers/HomePage/HomePage";
 
 configureAxiosClient(axios);
 
@@ -19,12 +20,15 @@ export const App = () => {
     return (
         <Layout>
             <Routes location={location}>
-                <Route index path="*" element={<Buildings />} />
-                <Route path="userDetails" element={<UserDetails />} />
-                <Route path="userDetailsForm" element={<UserDetailsForm />} />
+                <Route index path="*" element={<HomePage />} />
                 <Route path={"/buildings"}>
+                    <Route path={"all"} element={<Buildings />} />
                     <Route path={":guid"} element={<BuildingSuperAdminDetails />} />
                     <Route path={"add"} element={<BuildingForm />} />
+                </Route>
+                <Route path={"user"}>
+                    <Route path={":guid"} element={<UserDetails />} />
+                    <Route path={"add"} element={<UserDetailsForm />} />
                 </Route>
             </Routes>
             <ResetPasswordFirstLogin />

@@ -1,22 +1,25 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/authentificationActions";
 import { Button } from "primereact/button";
 import "./Header.css";
+import { AppState } from "../../store/configureStore";
 
 export const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const user = useSelector((state: AppState) => state.user);
+    console.log(user);
 
     const start = (
-        <Link to="/" aria-label="Početak headera">
+        <Link to="/buildings/all" aria-label="Početak headera">
             <i className="fas fa-building-user" />
         </Link>
     );
 
     const end = (
         <div className="header-end-section">
-            <Button label="User details" onClick={() => navigate("/userDetails")} />
+            <Button label="User details" onClick={() => navigate(`/user/${user.guid}`)} />
             <Button label="Logout" onClick={() => dispatch(logout())} />
         </div>
     );

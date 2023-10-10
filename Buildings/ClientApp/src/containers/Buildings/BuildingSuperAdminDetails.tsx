@@ -53,7 +53,7 @@ export const BuildingSuperAdminDetails = () => {
                 visible={deleteDialog}
                 handleClose={() => setDeleteDialog(false)}
                 deleteEndpoint={deleteResidentialBuilding}
-                callback={() => navigate("*")}
+                callback={() => navigate("/buildings/all")}
             />
         </BuildingContainer>
     );

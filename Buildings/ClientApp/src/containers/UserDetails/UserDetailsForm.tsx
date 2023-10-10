@@ -1,3 +1,9 @@
+import { BuildingContainer } from "../BuildingContainer/BuildingContainer";
+
 export const UserDetailsForm = () => {
-    return <div>User details form</div>;
+    return (
+        <BuildingContainer title="Add new user" centered>
+            <div></div>
+        </BuildingContainer>
+    );
 };

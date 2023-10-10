@@ -46,7 +46,7 @@ export const Buildings = () => {
                 <Button
                     label="Add new"
                     icon="pi pi-plus"
-                    onClick={() => navigate("buildings/add")}
+                    onClick={() => navigate("/buildings/add")}
                 />
             }
         >
