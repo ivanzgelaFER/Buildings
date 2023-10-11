@@ -3,6 +3,7 @@ import { AppState } from "../../store/configureStore";
 import { BuildingContainer } from "../BuildingContainer/BuildingContainer";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 export const UserDetails = () => {
     const user = useSelector((state: AppState) => state.user);
@@ -12,8 +13,14 @@ export const UserDetails = () => {
     console.log(user);
 
     return (
-        <BuildingContainer title="User details info">
-            <div></div>
-        </BuildingContainer>
+        <>
+            {loading ? (
+                <ProgressSpinner />
+            ) : (
+                <BuildingContainer title="User details info">
+                    <div></div>
+                </BuildingContainer>
+            )}
+        </>
     );
 };
