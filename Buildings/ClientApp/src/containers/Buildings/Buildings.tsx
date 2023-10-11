@@ -16,7 +16,6 @@ const cols = [
 ];
 
 export const Buildings = () => {
-    const user = useSelector((state: AppState) => state.user);
     const dispatch = useDispatch();
     const [buildings, setBuildings] = useState<IResidentialBuiding[]>([]);
     const navigate = useNavigate();
