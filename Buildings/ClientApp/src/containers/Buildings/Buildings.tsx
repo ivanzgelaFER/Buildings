@@ -4,9 +4,8 @@ import { Column } from "primereact/column";
 import { useCallback, useEffect, useState } from "react";
 import { IResidentialBuiding } from "../../models/residentialBuilding";
 import { getResidentialBuildings } from "../../api/residentialBuilding";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { AppState } from "../../store/configureStore";
 import { Button } from "primereact/button";
 import { showToastMessage } from "../../actions/toastMessageActions";
 

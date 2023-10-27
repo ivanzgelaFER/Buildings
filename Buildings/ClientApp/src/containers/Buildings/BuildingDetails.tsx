@@ -1,7 +1,7 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BuildingContainer } from "../BuildingContainer/BuildingContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { Dispatch, SetStateAction, useCallback, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useCallback, useState } from "react";
 import { showToastMessage } from "../../actions/toastMessageActions";
 import { editResidentialBuilding } from "../../api/residentialBuilding";
 import { IResidentialBuiding } from "../../models/residentialBuilding";
@@ -33,14 +33,9 @@ export const BuildingDetails = ({
     const user = useSelector((state: AppState) => state.user);
     const location = useLocation();
     const [editMode, setEditMode] = useState(location.pathname.endsWith("edit"));
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     let resetForm = () => {};
-
-    const backAction = () => {
-        navigate(-1);
-    };
 
     const onSubmit = useCallback(
         async (data: IResidentialBuiding) => {

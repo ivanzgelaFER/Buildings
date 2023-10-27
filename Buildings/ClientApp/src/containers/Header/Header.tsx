@@ -9,7 +9,6 @@ export const Header = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state: AppState) => state.user);
-    console.log(user);
 
     const start = (
         <Link to="/buildings/all" aria-label="Početak headera">
