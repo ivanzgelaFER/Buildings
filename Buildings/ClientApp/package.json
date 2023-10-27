@@ -1,7 +1,7 @@
 {
     "name": "buildings-v3",
     "version": "1.0.0",
-    "private": true,
+    "private": true,   
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.3.0",
         "@fortawesome/fontawesome-svg-core": "^6.2.0",
@@ -70,6 +70,7 @@
         ]
     },
     "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@formatjs/cli": "^5.1.1",
         "@types/lodash.debounce": "^4.0.7",
         "@types/react-router-dom": "^5.3.3",
