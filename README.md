@@ -101,18 +101,3 @@ For open source projects, say how it is licensed.
 ## Project status
 
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
-
-deploy-job:
-stage: deploy
-image: alpine:latest
-script: - apk add docker - docker version - rc-update add docker boot - service docker start - wget https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz - tar xf doctl-1.64.0-linux-amd64.tar.gz - mv doctl /usr/local/bin - |
-if [["$CI_COMMIT_BRANCH" == "main"]]; then
-doctl auth init -t "dop_v1_b452861bec9814a286f62064bb3a6f95cce2ef0c1fc00e4f657b17b0ba957715"
-echo "Successfull auth!"
-doctl registry login   
- echo "Successfully logged in!"
-#docker tag buildings_image registry.digitalocean.com/buildings/buildings_image_first
-#docker push registry.digitalocean.com/buildings/buildings_image_first  
- echo "Deploy to production envirement success!"
-fi
-only: - main
