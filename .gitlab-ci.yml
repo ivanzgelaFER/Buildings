@@ -4,11 +4,11 @@ stages:
 
 build-job:
     stage: build
-    image: docker:19.03.0-dind
+    image: docker:latest
     variables:
         DOCKER_IMAGE: buildings_image
     services:
-        - docker:19.03.0-dind
+        - docker:dind
     before_script:
         - echo "$CI_REGISTRY_USER"
         - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
