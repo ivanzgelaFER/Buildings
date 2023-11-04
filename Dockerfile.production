@@ -1,2 +1,40 @@
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
+RUN apt-get update -y
+RUN apt-get install cron -y
+RUN apt-get install nano
+RUN apt-get install -y apt-transport-https
+RUN apt-get install -y wget
+RUN wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN dpkg -i packages-microsoft-prod.deb
+RUN apt-get update -y
+RUN apt-get install -y dotnet-sdk-7.0
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+WORKDIR /app
+COPY ["Buildings/Buildings.csproj", "Buildings/"]
+COPY ["Buildings.Domain/Buildings.Domain.csproj", "Buildings.Domain/"]
+COPY ["Buildings.Data/Buildings.Data.csproj", "Buildings.Data/"] 
+RUN dotnet restore "Buildings/Buildings.csproj"
+# COPY <src> <dest>
+COPY . .
+
+WORKDIR /src/Buildings/ClientApp/
+#This command uses the curl utility to retrieve the script from the URL and then pipes the output to bash to execute the script
+#It is fetching and running a script that sets up the Node.js repository for installing Node.js version 18.x
+RUN curl -sL https://deb.nodesource.com/setup_18.x |  bash -
+#This command installs Node.js, command is used to install packages, and in this case, it installs the package named nodejs. 
+#The -y flag is used to automatically answer "yes" to any prompts that might come up during the installation process
+RUN apt-get install -y nodejs
+#This command runs the npm install command, which is used to install the dependencies specified in the package.json file in the current directory (/src/Aconto/ClientApp/)
+RUN npm install
+WORKDIR "/src/Buildings"
+RUN dotnet build "Buildings.csproj" -c Release -o /app/build
+FROM build AS publish
+RUN dotnet publish "Buildings.csproj" -c Release -o /app/publish
+
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Buildings.dll"]
