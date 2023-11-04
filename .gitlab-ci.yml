@@ -24,10 +24,9 @@ build-job:
 deploy-job:
     stage: deploy
     image: ubuntu:latest
-    services:
-        - docker:dind
     script:
-        - apk add docker
+        - apk add --update docker openrc
+        - rc-update add docker boot
         - wget https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz
         - tar xf doctl-1.64.0-linux-amd64.tar.gz
         - mv doctl /usr/local/bin
