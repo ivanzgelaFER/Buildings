@@ -25,10 +25,6 @@ deploy-job:
     stage: deploy
     image: alpine:latest
     script:
-        - apk add docker
-        - docker version
-        - rc-update add docker boot
-        - service docker start
         - wget https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz
         - tar xf doctl-1.64.0-linux-amd64.tar.gz
         - mv doctl /usr/local/bin
@@ -38,8 +34,6 @@ deploy-job:
               echo "Successfull auth!"
               doctl registry login		    
               echo "Successfully logged in!"
-              #docker tag buildings_image registry.digitalocean.com/buildings/buildings_image_first
-              #docker push registry.digitalocean.com/buildings/buildings_image_first    
               echo "Deploy to production envirement success!"
             fi
     only:
