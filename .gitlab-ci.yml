@@ -27,6 +27,8 @@ deploy-job:
     script:
         - apk add docker
         - docker version
+        - docker build -t alpine-docker .
+        - docker run -it --name alpine-docker -v "/var/run/docker.sock:/var/run/docker.sock:rw" alpine-docker
         - wget https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz
         - tar xf doctl-1.64.0-linux-amd64.tar.gz
         - mv doctl /usr/local/bin
