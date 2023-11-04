@@ -13,7 +13,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /app
+WORKDIR /src
 COPY ["Buildings/Buildings.csproj", "Buildings/"]
 COPY ["Buildings.Domain/Buildings.Domain.csproj", "Buildings.Domain/"]
 COPY ["Buildings.Data/Buildings.Data.csproj", "Buildings.Data/"] 
