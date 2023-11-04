@@ -36,8 +36,8 @@ deploy-job:
               echo "Successfull auth!"
               doctl registry login		    
               echo "Successfully loged in!"
-              docker tag buildings_image registry.digitalocean.com/buildings/buildings_image
-              docker push registry.digitalocean.com/buildings/buildings_image		    
+              docker tag buildings_image registry.digitalocean.com/buildings/buildings_image_first
+              docker push registry.digitalocean.com/buildings/buildings_image_first    
               echo "Deploy to production envirement success!"
             fi
     only:
