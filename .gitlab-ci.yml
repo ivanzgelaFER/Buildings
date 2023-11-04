@@ -23,7 +23,7 @@ build-job:
 
 deploy-job:
     stage: deploy
-    image: ubuntu:latest
+    image: alpine:latest
     script:
         - apk add --update docker openrc
         - rc-update add docker boot
