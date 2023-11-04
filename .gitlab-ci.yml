@@ -25,8 +25,10 @@ deploy-job:
     stage: deploy
     image: alpine:latest
     script:
-        - apk add --update docker openrc
-        - rc-update add docker boot
+        - apk add docker
+        - systemctl status docker
+        - systemctl start docker
+        - systemctl status docker
         - wget https://github.com/digitalocean/doctl/releases/download/v1.64.0/doctl-1.64.0-linux-amd64.tar.gz
         - tar xf doctl-1.64.0-linux-amd64.tar.gz
         - mv doctl /usr/local/bin
